@@ -1,3 +1,10 @@
+## [1.0.1](https://github.com/eveble/types-helpers/compare/v1.0.0...v1.0.1) (2020-07-06)
+
+
+### Bug Fixes
+
+* **exports:** exported types name to HelpersTypes ([c3306e5](https://github.com/eveble/types-helpers/commit/c3306e5b6721601086f8e4c7cf9724788a8781cd))
+
 # 1.0.0 (2020-07-06)
 
 

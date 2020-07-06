@@ -1,5 +1,5 @@
 export { types } from './types';
-export { types as VOHelpersTypes } from './types';
+export { types as HelpersTypes } from './types';
 export { Standard } from './standard';
 export { StandardizedMixin } from './mixins/standardized-mixin';
 export { ValidableMixin } from './mixins/validable-mixin';
