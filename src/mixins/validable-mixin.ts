@@ -3,7 +3,7 @@ export class ValidableMixin {
    * Sets validator on `ValueObject` in form of `onValidation` hook.
    * @param validator - Function validating ValueObject properties.
    */
-  public static setValidator(validator: () => boolean): void {
+  public static setValidator(validator: (...args: any[]) => boolean): void {
     (this.prototype as any).overrideHook(
       'onValidation',
       'validation',
