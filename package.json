@@ -29,6 +29,7 @@
     "reflect-metadata": "^0.1.13",
     "tsruntime": "^3.0.0-beta.1",
     "ttypescript": "^1.5.10",
+    "polytype": "^0.9.4",
     "@eveble/eveble": "^1.0.0"
   },
   "devDependencies": {
