@@ -9,6 +9,5 @@
   "timeout": 6000,
   "slow": 100,
   "watch-files": ["src/**/*.ts", "test/**/*.ts"],
-  "require": ["ts-node/register"],
-  "file": "./test/common.ts"
+  "require": ["ts-node/register"]
 }

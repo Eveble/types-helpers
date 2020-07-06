@@ -3,10 +3,6 @@ title: Getting Started
 sidebar_label: Getting Started
 ---
 
-[@eveble/types-helpers][package-homepage]
-
-Helpers for domains using DDD types
-
 ## Requirements
 
 - [Node.js][nodejs] MUST be v14.0 or later
