@@ -1,3 +1,10 @@
+## [1.0.2](https://github.com/eveble/types-helpers/compare/v1.0.1...v1.0.2) (2020-07-06)
+
+
+### Bug Fixes
+
+* validator type not allowing arguments ([209f581](https://github.com/eveble/types-helpers/commit/209f581cad243d4d8a46f580eb149fcd37f7d0dd))
+
 ## [1.0.1](https://github.com/eveble/types-helpers/compare/v1.0.0...v1.0.1) (2020-07-06)
 
 
