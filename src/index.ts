@@ -1,6 +1,6 @@
 // Types
 export { types } from './types';
-export { types as VOHelpersTypes } from './types';
+export { types as HelpersTypes } from './types';
 // Components
 export { Standard } from './standard';
 // Mixins
