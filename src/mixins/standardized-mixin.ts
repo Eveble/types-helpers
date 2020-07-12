@@ -1,10 +1,10 @@
 import { ValueObjectError, define } from '@eveble/eveble';
 import { types } from '../types';
 
-@define('Chaoty.StandardError')
+@define('Eveble.StandardError')
 export class StandardError extends ValueObjectError {}
 
-@define('Chaoty.UnsupportedStandardError')
+@define('Eveble.UnsupportedStandardError')
 export class UnsupportedStandardError extends ValueObjectError {
   public standardId: string;
 
@@ -13,21 +13,21 @@ export class UnsupportedStandardError extends ValueObjectError {
   }
 }
 
-@define('Chaoty.StandardExistError')
+@define('Eveble.StandardExistError')
 export class StandardExistError extends StandardError {
   constructor(typeName: string, id: string) {
     super(`${typeName}: standard with id '${id}' already exists`);
   }
 }
 
-@define('Chaoty.NotApplicableError')
+@define('Eveble.NotApplicableError')
 export class NotApplicableError extends StandardError {
   constructor(typeName: string, id: string) {
     super(`${typeName}: standard with id '${id}' is not applicable`);
   }
 }
 
-@define('Chaoty.UnavailableConversionError')
+@define('Eveble.UnavailableConversionError')
 export class UnavailableConversionError extends StandardError {
   public from: string;
 
