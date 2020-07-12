@@ -1,3 +1,10 @@
+## [1.0.3](https://github.com/eveble/types-helpers/compare/v1.0.2...v1.0.3) (2020-07-12)
+
+
+### Bug Fixes
+
+* **mixins:** type namespace to Eveble ([b613526](https://github.com/eveble/types-helpers/commit/b6135269903fe7aba2545698807c02cf03393925))
+
 ## [1.0.2](https://github.com/eveble/types-helpers/compare/v1.0.1...v1.0.2) (2020-07-06)
 
 

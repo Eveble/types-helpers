@@ -90,7 +90,7 @@ class Standard {
 exports.StandardError = class StandardError extends eveble.ValueObjectError {
 };
 exports.StandardError = __decorate([
-    eveble.define('Chaoty.StandardError')({ kind: 19, name: "StandardError", properties: {}, extends: { kind: 18, type: eveble.ValueObjectError, arguments: [] } })
+    eveble.define('Eveble.StandardError')({ kind: 19, name: "StandardError", properties: {}, extends: { kind: 18, type: eveble.ValueObjectError, arguments: [] } })
 ], exports.StandardError);
 exports.UnsupportedStandardError = class UnsupportedStandardError extends eveble.ValueObjectError {
     constructor(standardId) {
@@ -98,7 +98,7 @@ exports.UnsupportedStandardError = class UnsupportedStandardError extends eveble
     }
 };
 exports.UnsupportedStandardError = __decorate([
-    eveble.define('Chaoty.UnsupportedStandardError')({ kind: 19, name: "UnsupportedStandardError", properties: { "standardId": { kind: 2 } }, extends: { kind: 18, type: eveble.ValueObjectError, arguments: [] } }),
+    eveble.define('Eveble.UnsupportedStandardError')({ kind: 19, name: "UnsupportedStandardError", properties: { "standardId": { kind: 2 } }, extends: { kind: 18, type: eveble.ValueObjectError, arguments: [] } }),
     __metadata("design:paramtypes", [String])
 ], exports.UnsupportedStandardError);
 exports.StandardExistError = class StandardExistError extends exports.StandardError {
@@ -107,7 +107,7 @@ exports.StandardExistError = class StandardExistError extends exports.StandardEr
     }
 };
 exports.StandardExistError = __decorate([
-    eveble.define('Chaoty.StandardExistError')({ kind: 19, name: "StandardExistError", properties: {}, extends: { kind: 18, type: exports.StandardError, arguments: [] } }),
+    eveble.define('Eveble.StandardExistError')({ kind: 19, name: "StandardExistError", properties: {}, extends: { kind: 18, type: exports.StandardError, arguments: [] } }),
     __metadata("design:paramtypes", [String, String])
 ], exports.StandardExistError);
 exports.NotApplicableError = class NotApplicableError extends exports.StandardError {
@@ -116,7 +116,7 @@ exports.NotApplicableError = class NotApplicableError extends exports.StandardEr
     }
 };
 exports.NotApplicableError = __decorate([
-    eveble.define('Chaoty.NotApplicableError')({ kind: 19, name: "NotApplicableError", properties: {}, extends: { kind: 18, type: exports.StandardError, arguments: [] } }),
+    eveble.define('Eveble.NotApplicableError')({ kind: 19, name: "NotApplicableError", properties: {}, extends: { kind: 18, type: exports.StandardError, arguments: [] } }),
     __metadata("design:paramtypes", [String, String])
 ], exports.NotApplicableError);
 exports.UnavailableConversionError = class UnavailableConversionError extends exports.StandardError {
@@ -125,7 +125,7 @@ exports.UnavailableConversionError = class UnavailableConversionError extends ex
     }
 };
 exports.UnavailableConversionError = __decorate([
-    eveble.define('Chaoty.UnavailableConversionError')({ kind: 19, name: "UnavailableConversionError", properties: { "from": { kind: 2 }, "to": { kind: 2 } }, extends: { kind: 18, type: exports.StandardError, arguments: [] } }),
+    eveble.define('Eveble.UnavailableConversionError')({ kind: 19, name: "UnavailableConversionError", properties: { "from": { kind: 2 }, "to": { kind: 2 } }, extends: { kind: 18, type: exports.StandardError, arguments: [] } }),
     __metadata("design:paramtypes", [String, String])
 ], exports.UnavailableConversionError);
 class StandardizedMixin {
