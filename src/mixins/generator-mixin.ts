@@ -16,7 +16,7 @@ export class GeneratorExistsError extends ExtendableError {
 
 export class GeneratorNotFoundError extends ExtendableError {
   constructor(id: string) {
-    super(`Generator with id '${id}' would not found`);
+    super(`Generator with id '${id}' was not found`);
   }
 }
 

@@ -16,7 +16,7 @@ export class ValidatorExistsError extends ExtendableError {
 
 export class ValidatorNotFoundError extends ExtendableError {
   constructor(id: string) {
-    super(`Validator with id '${id}' would not found`);
+    super(`Validator with id '${id}' was not found`);
   }
 }
 
