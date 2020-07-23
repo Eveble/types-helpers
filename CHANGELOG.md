@@ -1,3 +1,10 @@
+## [1.0.4](https://github.com/eveble/types-helpers/compare/v1.0.3...v1.0.4) (2020-07-23)
+
+
+### Bug Fixes
+
+* **deps:** bump @eveble/eveble to latest ([b15ae20](https://github.com/eveble/types-helpers/commit/b15ae208c346e74d28a616fd624f6d3d2029af0e))
+
 ## [1.0.3](https://github.com/eveble/types-helpers/compare/v1.0.2...v1.0.3) (2020-07-12)
 
 

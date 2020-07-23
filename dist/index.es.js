@@ -225,7 +225,7 @@ class GeneratorExistsError extends ExtendableError {
 }
 class GeneratorNotFoundError extends ExtendableError {
     constructor(id) {
-        super(`Generator with id '${id}' would not found`);
+        super(`Generator with id '${id}' was not found`);
     }
 }
 class GeneratorMixin {
@@ -270,7 +270,7 @@ class ValidatorExistsError extends ExtendableError {
 }
 class ValidatorNotFoundError extends ExtendableError {
     constructor(id) {
-        super(`Validator with id '${id}' would not found`);
+        super(`Validator with id '${id}' was not found`);
     }
 }
 class ValidatorMixin {
