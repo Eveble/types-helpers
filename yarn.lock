@@ -356,20 +356,35 @@
     enabled "2.0.x"
     kuler "^2.0.0"
 
-"@eveble/ejson@^2.3.0":
+"@eveble/core@latest":
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/@eveble/core/-/core-1.0.2.tgz#f5a16c6e0d8a2517e09982b137e9a3ffaf3b4f09"
+  integrity sha512-oJXBOGp/ZkWM/T/Cvr0oBbaqe+3wh0CW2S9fPBRkKpbyR6RImcH3o7VVosEoSI9k45/uaTGC2hOsd+5+YPyZzQ==
+  dependencies:
+    "@eveble/helpers" latest
+    "@parisholley/inversify-async" "^1.1.7"
+    getenv "^1.0.0"
+    lodash "^4.17.19"
+    reflect-metadata "^0.1.13"
+    tsruntime "^3.0.0-beta.1"
+    ttypescript "^1.5.10"
+    typend latest
+
+"@eveble/ejson@latest":
   version "2.3.0"
   resolved "https://registry.yarnpkg.com/@eveble/ejson/-/ejson-2.3.0.tgz#fe8b7eb25b4234e62045904a2e786eddc3dab371"
   integrity sha512-mpmbteF38qjCAtAx4a78bOQKB2Zh1WvJf3sPI5Q1Fv9GowMZu/prPBNRjXb5sMVHaUX7OpYIRwwl0NiH+RvlwQ==
   dependencies:
     underscore "~1.8.3"
 
-"@eveble/eveble@^1.0.0":
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/@eveble/eveble/-/eveble-1.0.0.tgz#a019a6b520c21366b3dc572639be6715024793c9"
-  integrity sha512-l+cmbOXBYFm4V5cMnaSLtHJhm1+T3QwFAtM9jCmckcaOIiuZ1G4u3TG8vF/gnjKJZRTK2rW6gD8EokMImeh0kw==
+"@eveble/eveble@latest":
+  version "2.0.1"
+  resolved "https://registry.yarnpkg.com/@eveble/eveble/-/eveble-2.0.1.tgz#09488be18dab1b356a5211a75a5241ae623a2745"
+  integrity sha512-4w4dbjQ38m/hR2UnUdOQGO+nxtsfDmT1LUpCd+LubFxuGwx0zt8idTpFReXs8d7I3zk4QWkbNq9Dbz+3Ih1lww==
   dependencies:
-    "@eveble/ejson" "^2.3.0"
-    "@eveble/helpers" "^1.0.3"
+    "@eveble/core" latest
+    "@eveble/ejson" latest
+    "@eveble/helpers" latest
     "@jsbits/deep-clone" "^1.1.1"
     "@parisholley/inversify-async" "^1.1.7"
     abbreviate "^0.0.3"
@@ -390,11 +405,11 @@
     saslprep "^1.0.3"
     tsruntime "^3.0.0-beta.1"
     ttypescript "^1.5.10"
-    typend "^1.0.1"
+    typend latest
     uuid "^8.2.0"
     winston "^3.3.3"
 
-"@eveble/helpers@^1.0.3":
+"@eveble/helpers@^1.0.3", "@eveble/helpers@latest":
   version "1.0.3"
   resolved "https://registry.yarnpkg.com/@eveble/helpers/-/helpers-1.0.3.tgz#4cedc4df777dfd2a7bac2387a7537bc22abbd3a1"
   integrity sha512-gR/PKgh8yGIu6pHNrgaqb/Rgf9di6+rKQXXxofnRWVgP1pgQOpAb4TcqYJS/QV4JVSne5P0mc1oFo98jXbmprw==
@@ -2624,7 +2639,7 @@ debug@4, debug@^4.0.0, debug@^4.0.1, debug@^4.1.0, debug@^4.1.1, debug@~4.1.1:
   dependencies:
     ms "^2.1.1"
 
-debuglog@*, debuglog@^1.0.1:
+debuglog@^1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/debuglog/-/debuglog-1.0.1.tgz#aa24ffb9ac3df9a2351837cfb2d279360cd78492"
   integrity sha1-qiT/uaw9+aI1GDfPstJ5NgzXhJI=
@@ -4575,7 +4590,7 @@ import-lazy@^2.1.0:
   resolved "https://registry.yarnpkg.com/import-lazy/-/import-lazy-2.1.0.tgz#05698e3d45c88e8d7e9d92cb0584e77f096f3e43"
   integrity sha1-BWmOPUXIjo1+nZLLBYTnfwlvPkM=
 
-imurmurhash@*, imurmurhash@^0.1.4:
+imurmurhash@^0.1.4:
   version "0.1.4"
   resolved "https://registry.yarnpkg.com/imurmurhash/-/imurmurhash-0.1.4.tgz#9218b9b2b928a238b13dc4fb6b6d576f231453ea"
   integrity sha1-khi5srkoojixPcT7a21XbyMUU+o=
@@ -5607,11 +5622,6 @@ lockfile@^1.0.4:
   dependencies:
     signal-exit "^3.0.2"
 
-lodash._baseindexof@*:
-  version "3.1.0"
-  resolved "https://registry.yarnpkg.com/lodash._baseindexof/-/lodash._baseindexof-3.1.0.tgz#fe52b53a1c6761e42618d654e4a25789ed61822c"
-  integrity sha1-/lK1OhxnYeQmGNZU5KJXie1hgiw=
-
 lodash._baseuniq@~4.6.0:
   version "4.6.0"
   resolved "https://registry.yarnpkg.com/lodash._baseuniq/-/lodash._baseuniq-4.6.0.tgz#0ebb44e456814af7905c6212fa2c9b2d51b841e8"
@@ -5620,32 +5630,10 @@ lodash._baseuniq@~4.6.0:
     lodash._createset "~4.0.0"
     lodash._root "~3.0.0"
 
-lodash._bindcallback@*:
-  version "3.0.1"
-  resolved "https://registry.yarnpkg.com/lodash._bindcallback/-/lodash._bindcallback-3.0.1.tgz#e531c27644cf8b57a99e17ed95b35c748789392e"
-  integrity sha1-5THCdkTPi1epnhftlbNcdIeJOS4=
-
-lodash._cacheindexof@*:
-  version "3.0.2"
-  resolved "https://registry.yarnpkg.com/lodash._cacheindexof/-/lodash._cacheindexof-3.0.2.tgz#3dc69ac82498d2ee5e3ce56091bafd2adc7bde92"
-  integrity sha1-PcaayCSY0u5ePOVgkbr9Ktx73pI=
-
-lodash._createcache@*:
-  version "3.1.2"
-  resolved "https://registry.yarnpkg.com/lodash._createcache/-/lodash._createcache-3.1.2.tgz#56d6a064017625e79ebca6b8018e17440bdcf093"
-  integrity sha1-VtagZAF2JeeevKa4AY4XRAvc8JM=
-  dependencies:
-    lodash._getnative "^3.0.0"
-
 lodash._createset@~4.0.0:
   version "4.0.3"
   resolved "https://registry.yarnpkg.com/lodash._createset/-/lodash._createset-4.0.3.tgz#0f4659fbb09d75194fa9e2b88a6644d363c9fe26"
   integrity sha1-D0ZZ+7CddRlPqeK4imZE02PJ/iY=
-
-lodash._getnative@*, lodash._getnative@^3.0.0:
-  version "3.9.1"
-  resolved "https://registry.yarnpkg.com/lodash._getnative/-/lodash._getnative-3.9.1.tgz#570bc7dede46d61cdcde687d65d3eecbaa3aaff5"
-  integrity sha1-VwvH3t5G1hzc3mh9ZdPuy6o6r/U=
 
 lodash._reinterpolate@^3.0.0:
   version "3.0.0"
@@ -5702,11 +5690,6 @@ lodash.map@^4.5.1:
   resolved "https://registry.yarnpkg.com/lodash.map/-/lodash.map-4.6.0.tgz#771ec7839e3473d9c4cde28b19394c3562f4f6d3"
   integrity sha1-dx7Hg540c9nEzeKLGTlMNWL09tM=
 
-lodash.restparam@*:
-  version "3.6.1"
-  resolved "https://registry.yarnpkg.com/lodash.restparam/-/lodash.restparam-3.6.1.tgz#936a4e309ef330a7645ed4145986c85ae5b20805"
-  integrity sha1-k2pOMJ7zMKdkXtQUWYbIWuWyCAU=
-
 lodash.template@^4.0.2, lodash.template@^4.5.0:
   version "4.5.0"
   resolved "https://registry.yarnpkg.com/lodash.template/-/lodash.template-4.5.0.tgz#f976195cf3f347d0d5f52483569fe8031ccce8ab"
@@ -5752,7 +5735,7 @@ lodash@4.17.15:
   resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.15.tgz#b447f6670a0455bbfeedd11392eff330ea097548"
   integrity sha512-8xOcRHvCjnocdS5cpwXQXVzmmh5e5+saE2QGoeQmbKmRS6J3VQppPOIt0MnmE+4xlZoumy0GPG0D0MVIQbNA1A==
 
-lodash@^4.17.11, lodash@^4.17.12, lodash@^4.17.13, lodash@^4.17.14, lodash@^4.17.15, lodash@^4.17.4, lodash@^4.2.1:
+lodash@^4.17.11, lodash@^4.17.12, lodash@^4.17.13, lodash@^4.17.14, lodash@^4.17.15, lodash@^4.17.19, lodash@^4.17.4, lodash@^4.2.1:
   version "4.17.19"
   resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.19.tgz#e48ddedbe30b3321783c5b4301fbd353bc1e4a4b"
   integrity sha512-JNvd8XER9GQX0v2qJgsaN/mzFCNA5BRe/j8JN9d+tWyGLSodKQHKFicdwNYzWwI3wjRnaKPsGj1XkBjx/F96DQ==
@@ -9682,7 +9665,7 @@ typedoc@^0.17.7:
     shelljs "^0.8.4"
     typedoc-default-themes "^0.10.2"
 
-typend@^1.0.1:
+typend@latest:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/typend/-/typend-1.0.2.tgz#6711b424ab5dd9818aa3d857c03dc96c2080832b"
   integrity sha512-LjEEtqmDZt0ELyXuTpxGPnjecH++HWVVSTpX2MncT+yAinzPM67ik3Vlu34Lscw7wIOAbojLyqvl7amHve447A==
