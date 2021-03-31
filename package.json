@@ -32,6 +32,7 @@
     "polytype": "^0.9.4",
     "@eveble/eveble": "latest",
     "graphql": "latest",
+    "apollo-server-core": "latest"
   },
   "devDependencies": {
     "@types/chai-as-promised": "^7.1.2",
