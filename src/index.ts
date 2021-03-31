@@ -3,6 +3,7 @@ export { types } from './types';
 export { types as HelpersTypes } from './types';
 // Components
 export { Standard } from './standard';
+export { I18nError } from './i18n-error';
 // Mixins
 export { StandardizedMixin } from './mixins/standardized-mixin';
 export { ValidableMixin } from './mixins/validable-mixin';

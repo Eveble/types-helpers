@@ -1,6 +1,7 @@
 // Components
 import { expect } from 'chai';
 import { Standard } from '../../src/standard';
+import { I18nError } from '../../src/i18n-error';
 // Mixins
 import {
   StandardizedMixin,
@@ -25,9 +26,11 @@ import {
 } from '../../src/mixins/validator-mixin';
 // Errors
 import { EmptyStringError } from '../../src/errors';
+
 import {
   // Components
   Standard as StandardExported,
+  I18nError as I18nErrorExported,
   // Mixins
   StandardizedMixin as StandardizedMixinExported,
   ValidableMixin as ValidableMixinExported,
@@ -52,6 +55,9 @@ describe('exports', () => {
   describe('components', () => {
     it('Standard', () => {
       expect(Standard).to.be.equal(StandardExported);
+    });
+    it('I18nError', () => {
+      expect(I18nError).to.be.equal(I18nErrorExported);
     });
   });
   describe('mixins', () => {
