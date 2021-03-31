@@ -1,4 +1,5 @@
-import { ValueObjectError, define, ExtendableError, kernel } from '@eveble/eveble';
+import { ValueObjectError, define, DEFAULTS, ExtendableError, kernel } from '@eveble/eveble';
+import { ApolloError } from 'apollo-server-core';
 
 /*! *****************************************************************************
 Copyright (c) Microsoft Corporation.
@@ -80,6 +81,16 @@ class Standard {
     }
     getCodes() {
         return this.codes || [];
+    }
+}
+
+class I18nError extends ApolloError {
+    constructor(message, variables = {}, code, logLevel = DEFAULTS.LOGGING_LEVELS.warning) {
+        super(message, code);
+        this.message = message;
+        this.variables = variables;
+        this.code = code;
+        this.logLevel = logLevel;
     }
 }
 
@@ -303,4 +314,4 @@ class ValidatorMixin {
     }
 }
 
-export { EmptyStringError, GeneratorExistsError, GeneratorMixin, GeneratorNotFoundError, InvalidGeneratorIdError, InvalidValidatorIdError, NotApplicableError, Standard, StandardError, StandardExistError, StandardizedMixin, UnavailableConversionError, UnsupportedStandardError, ValidableMixin, ValidatorExistsError, ValidatorMixin, ValidatorNotFoundError };
+export { EmptyStringError, GeneratorExistsError, GeneratorMixin, GeneratorNotFoundError, I18nError, InvalidGeneratorIdError, InvalidValidatorIdError, NotApplicableError, Standard, StandardError, StandardExistError, StandardizedMixin, UnavailableConversionError, UnsupportedStandardError, ValidableMixin, ValidatorExistsError, ValidatorMixin, ValidatorNotFoundError };
