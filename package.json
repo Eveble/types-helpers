@@ -30,7 +30,8 @@
     "tsruntime": "^3.0.0-beta.1",
     "ttypescript": "^1.5.10",
     "polytype": "^0.9.4",
-    "@eveble/eveble": "latest"
+    "@eveble/eveble": "latest",
+    "graphql": "latest",
   },
   "devDependencies": {
     "@types/chai-as-promised": "^7.1.2",
