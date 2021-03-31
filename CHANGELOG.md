@@ -1,3 +1,10 @@
+# [1.1.0](https://github.com/eveble/types-helpers/compare/v1.0.4...v1.1.0) (2021-03-31)
+
+
+### Features
+
+* add I18nError ([1a25c42](https://github.com/eveble/types-helpers/commit/1a25c42a093b3ef843e79ddc5d04789844f12848))
+
 ## [1.0.4](https://github.com/eveble/types-helpers/compare/v1.0.3...v1.0.4) (2020-07-23)
 
 
