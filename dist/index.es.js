@@ -1,5 +1,7 @@
-import { ValueObjectError, define, DEFAULTS, ExtendableError, kernel } from '@eveble/eveble';
+import { ValueObjectError, define, DEFAULTS, EjsonableMixin, HookableMixin, kernel, ExtendableError } from '@eveble/eveble';
 import { ApolloError } from 'apollo-server-core';
+import util from 'util';
+import { classes } from 'polytype';
 
 /*! *****************************************************************************
 Copyright (c) Microsoft Corporation.
@@ -91,6 +93,107 @@ class I18nError extends ApolloError {
         this.variables = variables;
         this.code = code;
         this.logLevel = logLevel;
+    }
+}
+
+class ValidableMixin {
+    static setValidator(validator) {
+        this.prototype.overrideHook('onValidation', 'validation', validator);
+    }
+    static getValidator() {
+        return this.prototype.getHook('onValidation', 'validation');
+    }
+    static removeValidator() {
+        this.prototype.removeHook('onValidation', 'validation');
+    }
+    static hasValidator() {
+        return this.prototype.hasHook('onValidation', 'validation');
+    }
+}
+
+class ValueString extends classes(String, EjsonableMixin, HookableMixin, ValidableMixin) {
+    constructor(value) {
+        super([value]);
+        this.onValidation(value);
+        Object.defineProperty(this, 'value', {
+            value,
+            enumerable: false,
+        });
+    }
+    [util.inspect.custom]() {
+        return `[${this.constructor.name}: '${this.value}']`;
+    }
+    toString() {
+        return this.value;
+    }
+    valueOf() {
+        return this.value;
+    }
+    anchor() {
+        return this.anchor();
+    }
+    big() {
+        return this.big();
+    }
+    blink() {
+        return this.blink();
+    }
+    bold() {
+        return this.bold();
+    }
+    fixed() {
+        return this.fixed();
+    }
+    fontcolor(color) {
+        return this.fontcolor(color);
+    }
+    fontsize(size) {
+        return this.fontsize(size);
+    }
+    italics() {
+        return this.italics();
+    }
+    link(url) {
+        return this.link(url);
+    }
+    small() {
+        return this.small();
+    }
+    strike() {
+        return this.strike();
+    }
+    sub() {
+        return this.sub();
+    }
+    sup() {
+        return this.sup();
+    }
+    onValidation(value, isStrict = true) {
+        if (!kernel.isValidating()) {
+            return true;
+        }
+        try {
+            kernel.validator.validate(value, String, isStrict);
+        }
+        catch (error) {
+            const { message } = error;
+            const typeName = this.getTypeName();
+            throw new error.constructor(`${typeName}: ${message}`);
+        }
+        const hooks = this.getHooks('onValidation');
+        for (const hook of Object.values(hooks)) {
+            hook.bind(this)(value);
+        }
+        return true;
+    }
+}
+
+class ValueNumber extends Number {
+    constructor(value) {
+        super(value);
+    }
+    [util.inspect.custom]() {
+        return `[${this.constructor.name}: ${this}]`;
     }
 }
 
@@ -209,21 +312,6 @@ class StandardizedMixin {
     }
 }
 
-class ValidableMixin {
-    static setValidator(validator) {
-        this.prototype.overrideHook('onValidation', 'validation', validator);
-    }
-    static getValidator() {
-        return this.prototype.getHook('onValidation', 'validation');
-    }
-    static removeValidator() {
-        this.prototype.removeHook('onValidation', 'validation');
-    }
-    static hasValidator() {
-        return this.prototype.hasHook('onValidation', 'validation');
-    }
-}
-
 class InvalidGeneratorIdError extends ExtendableError {
     constructor(got) {
         super(`Expected id argument to be string, got ${got}`);
@@ -314,4 +402,4 @@ class ValidatorMixin {
     }
 }
 
-export { EmptyStringError, GeneratorExistsError, GeneratorMixin, GeneratorNotFoundError, I18nError, InvalidGeneratorIdError, InvalidValidatorIdError, NotApplicableError, Standard, StandardError, StandardExistError, StandardizedMixin, UnavailableConversionError, UnsupportedStandardError, ValidableMixin, ValidatorExistsError, ValidatorMixin, ValidatorNotFoundError };
+export { EmptyStringError, GeneratorExistsError, GeneratorMixin, GeneratorNotFoundError, I18nError, InvalidGeneratorIdError, InvalidValidatorIdError, NotApplicableError, Standard, StandardError, StandardExistError, StandardizedMixin, UnavailableConversionError, UnsupportedStandardError, ValidableMixin, ValidatorExistsError, ValidatorMixin, ValidatorNotFoundError, ValueNumber, ValueString };

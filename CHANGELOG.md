@@ -1,3 +1,11 @@
+# [1.2.0](https://github.com/eveble/types-helpers/compare/v1.1.1...v1.2.0) (2021-05-06)
+
+
+### Features
+
+* add ValueNumber ([04d26ca](https://github.com/eveble/types-helpers/commit/04d26ca94a27c546276536d3fb670f85dd138b0f))
+* add ValueString ([2fa407f](https://github.com/eveble/types-helpers/commit/2fa407f848c00d1fcd70e2db67e70d191c1b91e7))
+
 ## [1.1.1](https://github.com/eveble/types-helpers/compare/v1.1.0...v1.1.1) (2021-03-31)
 
 
