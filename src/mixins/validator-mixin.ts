@@ -20,6 +20,9 @@ export class ValidatorNotFoundError extends ExtendableError {
   }
 }
 
+/**
+ * Allows to define custom validators that can be used depending on specific criteria.
+ */
 export class ValidatorMixin<T> {
   private validators: Map<string, T>;
 
