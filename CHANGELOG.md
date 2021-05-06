@@ -1,3 +1,10 @@
+# [1.3.0](https://github.com/eveble/types-helpers/compare/v1.2.0...v1.3.0) (2021-05-06)
+
+
+### Features
+
+* implement equals method to value primitives ([207703c](https://github.com/eveble/types-helpers/commit/207703c494b28804b6a528203c25c83251bbbea3))
+
 # [1.2.0](https://github.com/eveble/types-helpers/compare/v1.1.1...v1.2.0) (2021-05-06)
 
 
