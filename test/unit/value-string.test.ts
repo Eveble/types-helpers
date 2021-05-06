@@ -103,4 +103,29 @@ describe('ValueString', () => {
       expect(() => new ValueString('foo')).to.throw(error);
     });
   });
+
+  describe('comparison', () => {
+    describe('equals', () => {
+      it('returns true if other instance is in same type and have same value', () => {
+        const first = new ValueString('foo');
+        const second = new ValueString('foo');
+
+        expect(first.equals(second)).to.be.true;
+      });
+
+      it('returns false if other instance is in different type', () => {
+        const first = new ValueString('foo');
+        const second = 'foo';
+
+        expect(first.equals(second)).to.be.false;
+      });
+
+      it('returns false if other instance have different value', () => {
+        const first = new ValueString('foo');
+        const second = new ValueString('bar');
+
+        expect(first.equals(second)).to.be.false;
+      });
+    });
+  });
 });
