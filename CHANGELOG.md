@@ -1,3 +1,10 @@
+## [1.1.1](https://github.com/eveble/types-helpers/compare/v1.1.0...v1.1.1) (2021-03-31)
+
+
+### Bug Fixes
+
+* export I18nError ([c4b8cf3](https://github.com/eveble/types-helpers/commit/c4b8cf370b78295506c6f3cc99ecefb257a43a5f))
+
 # [1.1.0](https://github.com/eveble/types-helpers/compare/v1.0.4...v1.1.0) (2021-03-31)
 
 

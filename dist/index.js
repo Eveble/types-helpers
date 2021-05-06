@@ -3,6 +3,7 @@
 Object.defineProperty(exports, '__esModule', { value: true });
 
 var eveble = require('@eveble/eveble');
+var apolloServerCore = require('apollo-server-core');
 
 /*! *****************************************************************************
 Copyright (c) Microsoft Corporation.
@@ -84,6 +85,16 @@ class Standard {
     }
     getCodes() {
         return this.codes || [];
+    }
+}
+
+class I18nError extends apolloServerCore.ApolloError {
+    constructor(message, variables = {}, code, logLevel = eveble.DEFAULTS.LOGGING_LEVELS.warning) {
+        super(message, code);
+        this.message = message;
+        this.variables = variables;
+        this.code = code;
+        this.logLevel = logLevel;
     }
 }
 
@@ -310,6 +321,7 @@ class ValidatorMixin {
 exports.GeneratorExistsError = GeneratorExistsError;
 exports.GeneratorMixin = GeneratorMixin;
 exports.GeneratorNotFoundError = GeneratorNotFoundError;
+exports.I18nError = I18nError;
 exports.InvalidGeneratorIdError = InvalidGeneratorIdError;
 exports.InvalidValidatorIdError = InvalidValidatorIdError;
 exports.Standard = Standard;
