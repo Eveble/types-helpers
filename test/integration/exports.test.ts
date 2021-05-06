@@ -1,7 +1,8 @@
-// Components
 import { expect } from 'chai';
+// Components
 import { Standard } from '../../src/standard';
 import { I18nError } from '../../src/i18n-error';
+import { ValueString } from '../../src/value-string';
 // Mixins
 import {
   StandardizedMixin,
@@ -31,6 +32,7 @@ import {
   // Components
   Standard as StandardExported,
   I18nError as I18nErrorExported,
+  ValueString as ValueStringExported,
   // Mixins
   StandardizedMixin as StandardizedMixinExported,
   ValidableMixin as ValidableMixinExported,
@@ -58,6 +60,9 @@ describe('exports', () => {
     });
     it('I18nError', () => {
       expect(I18nError).to.be.equal(I18nErrorExported);
+    });
+    it('ValueString', () => {
+      expect(ValueString).to.be.equal(ValueStringExported);
     });
   });
   describe('mixins', () => {

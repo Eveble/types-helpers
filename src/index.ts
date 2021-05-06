@@ -4,6 +4,7 @@ export { types as HelpersTypes } from './types';
 // Components
 export { Standard } from './standard';
 export { I18nError } from './i18n-error';
+export { ValueString } from './value-string';
 // Mixins
 export { StandardizedMixin } from './mixins/standardized-mixin';
 export { ValidableMixin } from './mixins/validable-mixin';
