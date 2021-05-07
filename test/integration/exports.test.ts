@@ -3,6 +3,7 @@ import { expect } from 'chai';
 import { Standard } from '../../src/standard';
 import { I18nError } from '../../src/i18n-error';
 import { ValueString } from '../../src/value-string';
+import { StandardizedValueString } from '../../src/standardized-value-string';
 import { ValueNumber } from '../../src/value-number';
 // Mixins
 import {
@@ -34,6 +35,7 @@ import {
   Standard as StandardExported,
   I18nError as I18nErrorExported,
   ValueString as ValueStringExported,
+  StandardizedValueString as StandardizedValueStringExported,
   ValueNumber as ValueNumberExported,
   // Mixins
   StandardizedMixin as StandardizedMixinExported,
@@ -65,6 +67,11 @@ describe('exports', () => {
     });
     it('ValueString', () => {
       expect(ValueString).to.be.equal(ValueStringExported);
+    });
+    it('StandardizedValueString', () => {
+      expect(StandardizedValueString).to.be.equal(
+        StandardizedValueStringExported
+      );
     });
     it('ValueNumber', () => {
       expect(ValueNumber).to.be.equal(ValueNumberExported);
