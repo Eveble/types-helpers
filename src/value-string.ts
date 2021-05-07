@@ -1,59 +1,12 @@
 import util from 'util';
-import {
-  EvebleTypes,
-  kernel,
-  HookableMixin,
-  SerializableMixin,
-  EjsonableMixin,
-} from '@eveble/eveble';
+import { EvebleTypes, kernel, HookableMixin } from '@eveble/eveble';
+import { getTypeName } from '@eveble/helpers';
 import { ValidableMixin } from './mixins/validable-mixin';
 
 export class ValueString extends String implements EvebleTypes.Hookable {
   constructor(value: string) {
     super(value);
     this.onValidation(value);
-
-    Object.defineProperties(this, {
-      // EjsonableMixin
-      typeName: {
-        enumerable: false,
-      },
-      // SerializableMixin
-      getTypeName: {
-        enumerable: false,
-      },
-      toJSONValue: {
-        enumerable: false,
-      },
-      // HookableMixin
-      registerHook: {
-        enumerable: false,
-      },
-      overrideHook: {
-        enumerable: false,
-      },
-      getHook: {
-        enumerable: false,
-      },
-      getHookOrThrow: {
-        enumerable: false,
-      },
-      getHooks: {
-        enumerable: false,
-      },
-      getActions: {
-        enumerable: false,
-      },
-      hasHook: {
-        enumerable: false,
-      },
-      hasAction: {
-        enumerable: false,
-      },
-      removeHook: {
-        enumerable: false,
-      },
-    });
   }
 
   /**
@@ -101,24 +54,62 @@ export class ValueString extends String implements EvebleTypes.Hookable {
   /**
    * EjsonableMixin
    */
-  typeName = EjsonableMixin.prototype.typeName;
+  /**
+   * @alias getTypeName
+   * @remarks
+   * Compatibility for EJSON serializer: `@eveble/ejson`
+   */
+  public typeName(): EvebleTypes.TypeName {
+    return this.getTypeName();
+  }
 
-  static typeName = EjsonableMixin.typeName;
+  /**
+   * @alias getTypeName
+   * @remarks
+   * Compatibility for EJSON serializer: `@eveble/ejson`
+   */
+  public static typeName(): EvebleTypes.TypeName {
+    return this.getTypeName();
+  }
 
   /**
    * SerializableMixin
    */
-  getTypeName = SerializableMixin.prototype.getTypeName;
-
-  toJSONValue = SerializableMixin.prototype.toJSONValue;
-
-  static getTypeName = SerializableMixin.getTypeName;
-
-  static toString = SerializableMixin.toString;
+  /**
+   * Returns definable type name.
+   * @returns Type name as a string.
+   */
+  public getTypeName(): EvebleTypes.TypeName {
+    return getTypeName(this) as EvebleTypes.TypeName;
+  }
 
   /**
-   * Re-implement custom inspection in console.log do to issue with `polytype` `classes` mixin resolving
-   * provided string as an Object with key-value pairs as text(so 'bar' becomes {0: "b", 1: "a", 2: "r"})
+   * Returns definable type name
+   * @returns Type name as a string.
+   */
+  public static toString(): EvebleTypes.TypeName {
+    return this.getTypeName();
+  }
+
+  /**
+   * Returns definable type name.
+   * @returns Type name as a string.
+   */
+  public static getTypeName(): EvebleTypes.TypeName {
+    return getTypeName(this) as EvebleTypes.TypeName;
+  }
+
+  /**
+   * Serializes value into a JSON-compatible value. It preserves all custom
+   * field types, however the initial value type is not saved.
+   * @returns Normalized value as JSON-compatible without type identifers.
+   */
+  public toJSONValue(): Record<string, any> {
+    return kernel.serializer?.toJSONValue(this);
+  }
+
+  /**
+   * Implement custom inspection in console.log.
    * @remarks
    * https://stackoverflow.com/a/41440854/15841272
    *
@@ -229,34 +220,46 @@ export class ValueString extends String implements EvebleTypes.Hookable {
   /**
    * ValidableMixin
    */
-  static setValidator = ValidableMixin.setValidator;
+  /**
+   * Sets validator on `ValueObject` in form of `onValidation` hook.
+   * @param validator - Function validating ValueObject properties.
+   */
+  public static setValidator(validator: (...args: any[]) => boolean): void {
+    (this.prototype as any).overrideHook(
+      'onValidation',
+      'validation',
+      validator
+    );
+  }
 
-  static getValidator = ValidableMixin.getValidator;
+  /**
+   * Returns `ValueObject` validator from `onValidation` hook.
+   * @returns Validation `Function` if assigned, else `undefined`.
+   */
+  public static getValidator(): () => boolean {
+    return (this.prototype as any).getHook('onValidation', 'validation');
+  }
 
-  static removeValidator = ValidableMixin.removeValidator;
+  /**
+   * Removes validation from `onValidation` hook.
+   */
+  public static removeValidator(): void {
+    (this.prototype as any).removeHook('onValidation', 'validation');
+  }
 
-  static hasValidator = ValidableMixin.hasValidator;
+  /**
+   * Evaluates if validator is assigned to `ValueObject`
+   * @returns Returns `true` if validator is assigned, else `false`.
+   */
+  public static hasValidator(): boolean {
+    return (this.prototype as any).hasHook('onValidation', 'validation');
+  }
 }
-
-const proto = ValueString.prototype as any;
-
-/**
- * EjsonableMixin
- */
-proto.typeName = EjsonableMixin.prototype.typeName;
-ValueString.typeName = EjsonableMixin.typeName;
-
-/**
- * SerializableMixin
- */
-proto.getTypeName = SerializableMixin.prototype.getTypeName;
-ValueString.getTypeName = SerializableMixin.getTypeName;
-ValueString.toString = SerializableMixin.toString;
-proto.toJSONValue = SerializableMixin.prototype.toJSONValue;
 
 /**
  * HookableMixin
  */
+const proto = ValueString.prototype as any;
 proto.registerHook = HookableMixin.prototype.registerHook;
 proto.overrideHook = HookableMixin.prototype.overrideHook;
 proto.getHook = HookableMixin.prototype.getHook;
@@ -266,11 +269,3 @@ proto.getActions = HookableMixin.prototype.getActions;
 proto.hasHook = HookableMixin.prototype.hasHook;
 proto.hasAction = HookableMixin.prototype.hasAction;
 proto.removeHook = HookableMixin.prototype.removeHook;
-
-/**
- * ValidableMixin
- */
-ValueString.setValidator = ValidableMixin.setValidator;
-ValueString.getValidator = ValidableMixin.getValidator;
-ValueString.removeValidator = ValidableMixin.removeValidator;
-ValueString.hasValidator = ValidableMixin.hasValidator;
