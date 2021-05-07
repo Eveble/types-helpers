@@ -18,17 +18,12 @@ describe('ValueString', () => {
     expect(ValueString.prototype).to.be.instanceof(String);
   });
 
-  it('ensures that provided value is stored under non enumerable value property', () => {
-    const val = new ValueString('foo');
-    expect((val as any).value).to.be.equal('foo');
-    expect(Object.keys(val).includes('value')).to.be.false;
-  });
-
   it('ensures that value can be compared truthfully', () => {
     expect(new ValueString('foo')).to.be.eql(new ValueString('foo'));
   });
 
   it('ensures that value can be compared falsy', () => {
+    expect(new ValueString('foo')).not.to.be.eql('bar');
     expect(new ValueString('foo')).not.to.be.eql(new ValueString('bar'));
   });
 
