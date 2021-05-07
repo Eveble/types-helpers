@@ -1,3 +1,15 @@
+# [1.4.0](https://github.com/eveble/types-helpers/compare/v1.3.0...v1.4.0) (2021-05-07)
+
+
+### Bug Fixes
+
+* extend String directly on ValueString ([55d52fd](https://github.com/eveble/types-helpers/commit/55d52fdea1e8d6dc09abfbeb9ee3738358668788))
+
+
+### Features
+
+* add StandardizedValueString ([6b6f935](https://github.com/eveble/types-helpers/commit/6b6f9357959abb0208e936f64151751a342b935c))
+
 # [1.3.0](https://github.com/eveble/types-helpers/compare/v1.2.0...v1.3.0) (2021-05-06)
 
 

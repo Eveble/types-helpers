@@ -1,12 +1,15 @@
-import { HookableMixin, EjsonableMixin } from '@eveble/eveble';
+import { EvebleTypes, SerializableMixin, EjsonableMixin } from '@eveble/eveble';
 import { ValidableMixin } from './mixins/validable-mixin';
-declare const ValueString_base: import("polytype").Polytype.ClusteredConstructor<[StringConstructor, typeof EjsonableMixin, typeof HookableMixin, typeof ValidableMixin]>;
-export declare class ValueString extends ValueString_base {
+export declare class ValueString extends String implements EvebleTypes.Hookable {
     constructor(value: string);
-    protected value: string;
+    protected onValidation(value: string, isStrict?: boolean): boolean;
     equals(other: any): boolean;
-    toString(): string;
-    valueOf(): string;
+    typeName: () => string;
+    static typeName: typeof EjsonableMixin.typeName;
+    getTypeName: () => string;
+    toJSONValue: () => Record<string, any>;
+    static getTypeName: typeof SerializableMixin.getTypeName;
+    static toString: typeof SerializableMixin.toString;
     anchor(): string;
     big(): string;
     blink(): string;
@@ -20,6 +23,17 @@ export declare class ValueString extends ValueString_base {
     strike(): string;
     sub(): string;
     sup(): string;
-    protected onValidation(value: string, isStrict?: boolean): boolean;
+    registerHook: (action: string, id: string, hook: EvebleTypes.AnyFunction, shouldOverride?: boolean | undefined) => void;
+    overrideHook: (action: string, id: string, hook: EvebleTypes.AnyFunction) => void;
+    getHook: (action: string, id: string) => EvebleTypes.AnyFunction | undefined;
+    getHookOrThrow: (action: string, id: string) => EvebleTypes.AnyFunction;
+    getHooks: (action: string) => Record<string, EvebleTypes.AnyFunction>;
+    getActions: () => Record<string, Record<string, EvebleTypes.AnyFunction>>;
+    hasHook: (action: string, id: string) => boolean;
+    hasAction: (action: string) => boolean;
+    removeHook: (action: string, id: string) => void;
+    static setValidator: typeof ValidableMixin.setValidator;
+    static getValidator: typeof ValidableMixin.getValidator;
+    static removeValidator: typeof ValidableMixin.removeValidator;
+    static hasValidator: typeof ValidableMixin.hasValidator;
 }
-export {};

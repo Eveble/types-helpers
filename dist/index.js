@@ -7,7 +7,6 @@ function _interopDefault (ex) { return (ex && (typeof ex === 'object') && 'defau
 var eveble = require('@eveble/eveble');
 var apolloServerCore = require('apollo-server-core');
 var util = _interopDefault(require('util'));
-var polytype = require('polytype');
 
 /*! *****************************************************************************
 Copyright (c) Microsoft Corporation.
@@ -117,14 +116,78 @@ class ValidableMixin {
     }
 }
 
-class ValueString extends polytype.classes(String, eveble.EjsonableMixin, eveble.HookableMixin, ValidableMixin) {
+class ValueString extends String {
     constructor(value) {
-        super([value]);
+        super(value);
+        this.typeName = eveble.EjsonableMixin.prototype.typeName;
+        this.getTypeName = eveble.SerializableMixin.prototype.getTypeName;
+        this.toJSONValue = eveble.SerializableMixin.prototype.toJSONValue;
+        this.registerHook = eveble.HookableMixin.prototype.registerHook;
+        this.overrideHook = eveble.HookableMixin.prototype.overrideHook;
+        this.getHook = eveble.HookableMixin.prototype.getHook;
+        this.getHookOrThrow = eveble.HookableMixin.prototype.getHookOrThrow;
+        this.getHooks = eveble.HookableMixin.prototype.getHooks;
+        this.getActions = eveble.HookableMixin.prototype.getActions;
+        this.hasHook = eveble.HookableMixin.prototype.hasHook;
+        this.hasAction = eveble.HookableMixin.prototype.hasAction;
+        this.removeHook = eveble.HookableMixin.prototype.removeHook;
         this.onValidation(value);
-        Object.defineProperty(this, 'value', {
-            value,
-            enumerable: false,
+        Object.defineProperties(this, {
+            typeName: {
+                enumerable: false,
+            },
+            getTypeName: {
+                enumerable: false,
+            },
+            toJSONValue: {
+                enumerable: false,
+            },
+            registerHook: {
+                enumerable: false,
+            },
+            overrideHook: {
+                enumerable: false,
+            },
+            getHook: {
+                enumerable: false,
+            },
+            getHookOrThrow: {
+                enumerable: false,
+            },
+            getHooks: {
+                enumerable: false,
+            },
+            getActions: {
+                enumerable: false,
+            },
+            hasHook: {
+                enumerable: false,
+            },
+            hasAction: {
+                enumerable: false,
+            },
+            removeHook: {
+                enumerable: false,
+            },
         });
+    }
+    onValidation(value, isStrict = true) {
+        if (!eveble.kernel.isValidating()) {
+            return true;
+        }
+        try {
+            eveble.kernel.validator.validate(value, String, isStrict);
+        }
+        catch (error) {
+            const { message } = error;
+            const typeName = this.getTypeName();
+            throw new error.constructor(`${typeName}: ${message}`);
+        }
+        const hooks = this.getHooks('onValidation');
+        for (const hook of Object.values(hooks)) {
+            hook.bind(this)(value);
+        }
+        return true;
     }
     equals(other) {
         return (other !== null &&
@@ -132,13 +195,7 @@ class ValueString extends polytype.classes(String, eveble.EjsonableMixin, eveble
             this.valueOf() === other.valueOf());
     }
     [util.inspect.custom]() {
-        return `[${this.constructor.name}: '${this.value}']`;
-    }
-    toString() {
-        return this.value;
-    }
-    valueOf() {
-        return this.value;
+        return `[${this.constructor.name}: '${this}']`;
     }
     anchor() {
         return this.anchor();
@@ -179,39 +236,34 @@ class ValueString extends polytype.classes(String, eveble.EjsonableMixin, eveble
     sup() {
         return this.sup();
     }
-    onValidation(value, isStrict = true) {
-        if (!eveble.kernel.isValidating()) {
-            return true;
-        }
-        try {
-            eveble.kernel.validator.validate(value, String, isStrict);
-        }
-        catch (error) {
-            const { message } = error;
-            const typeName = this.getTypeName();
-            throw new error.constructor(`${typeName}: ${message}`);
-        }
-        const hooks = this.getHooks('onValidation');
-        for (const hook of Object.values(hooks)) {
-            hook.bind(this)(value);
-        }
-        return true;
-    }
 }
-
-class ValueNumber extends Number {
-    constructor(value) {
-        super(value);
-    }
-    equals(other) {
-        return (other !== null &&
-            other.constructor === this.constructor &&
-            this.valueOf() === other.valueOf());
-    }
-    [util.inspect.custom]() {
-        return `[${this.constructor.name}: ${this}]`;
-    }
-}
+ValueString.typeName = eveble.EjsonableMixin.typeName;
+ValueString.getTypeName = eveble.SerializableMixin.getTypeName;
+ValueString.toString = eveble.SerializableMixin.toString;
+ValueString.setValidator = ValidableMixin.setValidator;
+ValueString.getValidator = ValidableMixin.getValidator;
+ValueString.removeValidator = ValidableMixin.removeValidator;
+ValueString.hasValidator = ValidableMixin.hasValidator;
+const proto = ValueString.prototype;
+proto.typeName = eveble.EjsonableMixin.prototype.typeName;
+ValueString.typeName = eveble.EjsonableMixin.typeName;
+proto.getTypeName = eveble.SerializableMixin.prototype.getTypeName;
+ValueString.getTypeName = eveble.SerializableMixin.getTypeName;
+ValueString.toString = eveble.SerializableMixin.toString;
+proto.toJSONValue = eveble.SerializableMixin.prototype.toJSONValue;
+proto.registerHook = eveble.HookableMixin.prototype.registerHook;
+proto.overrideHook = eveble.HookableMixin.prototype.overrideHook;
+proto.getHook = eveble.HookableMixin.prototype.getHook;
+proto.getHookOrThrow = eveble.HookableMixin.prototype.getHookOrThrow;
+proto.getHooks = eveble.HookableMixin.prototype.getHooks;
+proto.getActions = eveble.HookableMixin.prototype.getActions;
+proto.hasHook = eveble.HookableMixin.prototype.hasHook;
+proto.hasAction = eveble.HookableMixin.prototype.hasAction;
+proto.removeHook = eveble.HookableMixin.prototype.removeHook;
+ValueString.setValidator = ValidableMixin.setValidator;
+ValueString.getValidator = ValidableMixin.getValidator;
+ValueString.removeValidator = ValidableMixin.removeValidator;
+ValueString.hasValidator = ValidableMixin.hasValidator;
 
 exports.StandardError = class StandardError extends eveble.ValueObjectError {
 };
@@ -328,6 +380,43 @@ class StandardizedMixin {
     }
 }
 
+class StandardizedValueString extends ValueString {
+}
+StandardizedValueString.registerStandard = StandardizedMixin.registerStandard;
+StandardizedValueString.overrideStandard = StandardizedMixin.overrideStandard;
+StandardizedValueString.hasStandard = StandardizedMixin.hasStandard;
+StandardizedValueString.removeStandard = StandardizedMixin.removeStandard;
+StandardizedValueString.getStandards = StandardizedMixin.getStandards;
+StandardizedValueString.getStandard = StandardizedMixin.getStandard;
+StandardizedValueString.getCodes = StandardizedMixin.getCodes;
+StandardizedValueString.identifyStandard = StandardizedMixin.identifyStandard;
+StandardizedValueString.isInStandard = StandardizedMixin.isInStandard;
+StandardizedValueString.convert = StandardizedMixin.convert;
+StandardizedValueString.registerStandard = StandardizedMixin.registerStandard;
+StandardizedValueString.overrideStandard = StandardizedMixin.overrideStandard;
+StandardizedValueString.hasStandard = StandardizedMixin.hasStandard;
+StandardizedValueString.removeStandard = StandardizedMixin.removeStandard;
+StandardizedValueString.getStandards = StandardizedMixin.getStandards;
+StandardizedValueString.getStandard = StandardizedMixin.getStandard;
+StandardizedValueString.getCodes = StandardizedMixin.getCodes;
+StandardizedValueString.identifyStandard = StandardizedMixin.identifyStandard;
+StandardizedValueString.isInStandard = StandardizedMixin.isInStandard;
+StandardizedValueString.convert = StandardizedMixin.convert;
+
+class ValueNumber extends Number {
+    constructor(value) {
+        super(value);
+    }
+    equals(other) {
+        return (other !== null &&
+            other.constructor === this.constructor &&
+            this.valueOf() === other.valueOf());
+    }
+    [util.inspect.custom]() {
+        return `[${this.constructor.name}: ${this}]`;
+    }
+}
+
 class InvalidGeneratorIdError extends eveble.ExtendableError {
     constructor(got) {
         super(`Expected id argument to be string, got ${got}`);
@@ -426,6 +515,7 @@ exports.InvalidGeneratorIdError = InvalidGeneratorIdError;
 exports.InvalidValidatorIdError = InvalidValidatorIdError;
 exports.Standard = Standard;
 exports.StandardizedMixin = StandardizedMixin;
+exports.StandardizedValueString = StandardizedValueString;
 exports.ValidableMixin = ValidableMixin;
 exports.ValidatorExistsError = ValidatorExistsError;
 exports.ValidatorMixin = ValidatorMixin;
