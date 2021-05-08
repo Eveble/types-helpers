@@ -3,7 +3,6 @@ export { types as HelpersTypes } from './types';
 export { Standard } from './standard';
 export { I18nError } from './i18n-error';
 export { ValueString } from './value-string';
-export { StandardizedValueString } from './standardized-value-string';
 export { ValueNumber } from './value-number';
 export { StandardizedMixin } from './mixins/standardized-mixin';
 export { ValidableMixin } from './mixins/validable-mixin';
