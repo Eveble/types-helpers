@@ -18,12 +18,17 @@ describe('ValueString', () => {
     expect(ValueString.prototype).to.be.instanceof(String);
   });
 
+  it('ensures that provided value is stored under non enumerable value property', () => {
+    const val = new ValueString('foo');
+    expect((val as any).value).to.be.equal('foo');
+    expect(Object.keys(val).includes('value')).to.be.false;
+  });
+
   it('ensures that value can be compared truthfully', () => {
     expect(new ValueString('foo')).to.be.eql(new ValueString('foo'));
   });
 
   it('ensures that value can be compared falsy', () => {
-    expect(new ValueString('foo')).not.to.be.eql('bar');
     expect(new ValueString('foo')).not.to.be.eql(new ValueString('bar'));
   });
 
@@ -96,31 +101,6 @@ describe('ValueString', () => {
       secondValidator.throws(error);
 
       expect(() => new ValueString('foo')).to.throw(error);
-    });
-  });
-
-  describe('comparison', () => {
-    describe('equals', () => {
-      it('returns true if other instance is in same type and have same value', () => {
-        const first = new ValueString('foo');
-        const second = new ValueString('foo');
-
-        expect(first.equals(second)).to.be.true;
-      });
-
-      it('returns false if other instance is in different type', () => {
-        const first = new ValueString('foo');
-        const second = 'foo';
-
-        expect(first.equals(second)).to.be.false;
-      });
-
-      it('returns false if other instance have different value', () => {
-        const first = new ValueString('foo');
-        const second = new ValueString('bar');
-
-        expect(first.equals(second)).to.be.false;
-      });
     });
   });
 });

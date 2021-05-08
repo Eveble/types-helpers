@@ -1,6 +1,6 @@
 {
   "name": "@eveble/types-helpers",
-  "version": "1.4.1",
+  "version": "1.1.1",
   "description": "Helpers for domains using DDD types",
   "main": "dist/index.js",
   "module": "dist/index.es.js",
@@ -31,7 +31,6 @@
     "ttypescript": "^1.5.10",
     "polytype": "^0.9.4",
     "@eveble/eveble": "latest",
-    "@eveble/helpers": "latest",
     "graphql": "latest",
     "apollo-server-core": "latest"
   },
