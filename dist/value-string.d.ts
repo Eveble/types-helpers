@@ -1,14 +1,11 @@
-import { EvebleTypes } from '@eveble/eveble';
-export declare class ValueString extends String implements EvebleTypes.Hookable {
+import { HookableMixin, EjsonableMixin } from '@eveble/eveble';
+import { ValidableMixin } from './mixins/validable-mixin';
+declare const ValueString_base: import("polytype").Polytype.ClusteredConstructor<[StringConstructor, typeof EjsonableMixin, typeof HookableMixin, typeof ValidableMixin]>;
+export declare class ValueString extends ValueString_base {
     constructor(value: string);
-    protected onValidation(value: string, isStrict?: boolean): boolean;
-    equals(other: any): boolean;
-    typeName(): EvebleTypes.TypeName;
-    static typeName(): EvebleTypes.TypeName;
-    getTypeName(): EvebleTypes.TypeName;
-    static toString(): EvebleTypes.TypeName;
-    static getTypeName(): EvebleTypes.TypeName;
-    toJSONValue(): Record<string, any>;
+    protected value: string;
+    toString(): string;
+    valueOf(): string;
     anchor(): string;
     big(): string;
     blink(): string;
@@ -22,17 +19,6 @@ export declare class ValueString extends String implements EvebleTypes.Hookable 
     strike(): string;
     sub(): string;
     sup(): string;
-    registerHook: (action: string, id: string, hook: EvebleTypes.AnyFunction, shouldOverride?: boolean | undefined) => void;
-    overrideHook: (action: string, id: string, hook: EvebleTypes.AnyFunction) => void;
-    getHook: (action: string, id: string) => EvebleTypes.AnyFunction | undefined;
-    getHookOrThrow: (action: string, id: string) => EvebleTypes.AnyFunction;
-    getHooks: (action: string) => Record<string, EvebleTypes.AnyFunction>;
-    getActions: () => Record<string, Record<string, EvebleTypes.AnyFunction>>;
-    hasHook: (action: string, id: string) => boolean;
-    hasAction: (action: string) => boolean;
-    removeHook: (action: string, id: string) => void;
-    static setValidator(validator: (...args: any[]) => boolean): void;
-    static getValidator(): () => boolean;
-    static removeValidator(): void;
-    static hasValidator(): boolean;
+    protected onValidation(value: string, isStrict?: boolean): boolean;
 }
+export {};

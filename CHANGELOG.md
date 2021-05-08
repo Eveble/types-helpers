@@ -1,3 +1,13 @@
+# [2.0.0](https://github.com/eveble/types-helpers/compare/v1.4.1...v2.0.0) (2021-05-08)
+
+
+* refactor!: remove use of ValueString as standalone class without mixins ([f7072b7](https://github.com/eveble/types-helpers/commit/f7072b7b547a0d1da0e71424f4571c8ebd6a8e2e))
+
+
+### BREAKING CHANGES
+
+* remove use of ValueString as standalone class without mixins
+
 ## [1.4.1](https://github.com/eveble/types-helpers/compare/v1.4.0...v1.4.1) (2021-05-08)
 
 
