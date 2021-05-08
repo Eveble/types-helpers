@@ -4,6 +4,7 @@ declare const ValueString_base: import("polytype").Polytype.ClusteredConstructor
 export declare class ValueString extends ValueString_base {
     constructor(value: string);
     protected value: string;
+    equals(other: any): boolean;
     toString(): string;
     valueOf(): string;
     anchor(): string;

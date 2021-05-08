@@ -120,6 +120,11 @@ class ValueString extends classes(String, EjsonableMixin, HookableMixin, Validab
             enumerable: false,
         });
     }
+    equals(other) {
+        return (other !== null &&
+            other.constructor === this.constructor &&
+            this.valueOf() === other.valueOf());
+    }
     [util.inspect.custom]() {
         return `[${this.constructor.name}: '${this.value}']`;
     }
@@ -191,6 +196,11 @@ class ValueString extends classes(String, EjsonableMixin, HookableMixin, Validab
 class ValueNumber extends Number {
     constructor(value) {
         super(value);
+    }
+    equals(other) {
+        return (other !== null &&
+            other.constructor === this.constructor &&
+            this.valueOf() === other.valueOf());
     }
     [util.inspect.custom]() {
         return `[${this.constructor.name}: ${this}]`;

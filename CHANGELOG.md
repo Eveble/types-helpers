@@ -1,3 +1,11 @@
+# [2.1.0](https://github.com/eveble/types-helpers/compare/v2.0.0...v2.1.0) (2021-05-08)
+
+
+### Features
+
+* add equals method on ValueNumber ([7fba87d](https://github.com/eveble/types-helpers/commit/7fba87d300a63bb42100d56499e7a68077415bf0))
+* add equals method on ValueString ([fd43bd3](https://github.com/eveble/types-helpers/commit/fd43bd33f2336bb7bc57a5a3502fc5f7c6639c59))
+
 # [2.0.0](https://github.com/eveble/types-helpers/compare/v1.4.1...v2.0.0) (2021-05-08)
 
 
