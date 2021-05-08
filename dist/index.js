@@ -7,6 +7,7 @@ function _interopDefault (ex) { return (ex && (typeof ex === 'object') && 'defau
 var eveble = require('@eveble/eveble');
 var apolloServerCore = require('apollo-server-core');
 var util = _interopDefault(require('util'));
+var helpers = require('@eveble/helpers');
 
 /*! *****************************************************************************
 Copyright (c) Microsoft Corporation.
@@ -101,27 +102,9 @@ class I18nError extends apolloServerCore.ApolloError {
     }
 }
 
-class ValidableMixin {
-    static setValidator(validator) {
-        this.prototype.overrideHook('onValidation', 'validation', validator);
-    }
-    static getValidator() {
-        return this.prototype.getHook('onValidation', 'validation');
-    }
-    static removeValidator() {
-        this.prototype.removeHook('onValidation', 'validation');
-    }
-    static hasValidator() {
-        return this.prototype.hasHook('onValidation', 'validation');
-    }
-}
-
 class ValueString extends String {
     constructor(value) {
         super(value);
-        this.typeName = eveble.EjsonableMixin.prototype.typeName;
-        this.getTypeName = eveble.SerializableMixin.prototype.getTypeName;
-        this.toJSONValue = eveble.SerializableMixin.prototype.toJSONValue;
         this.registerHook = eveble.HookableMixin.prototype.registerHook;
         this.overrideHook = eveble.HookableMixin.prototype.overrideHook;
         this.getHook = eveble.HookableMixin.prototype.getHook;
@@ -133,15 +116,6 @@ class ValueString extends String {
         this.removeHook = eveble.HookableMixin.prototype.removeHook;
         this.onValidation(value);
         Object.defineProperties(this, {
-            typeName: {
-                enumerable: false,
-            },
-            getTypeName: {
-                enumerable: false,
-            },
-            toJSONValue: {
-                enumerable: false,
-            },
             registerHook: {
                 enumerable: false,
             },
@@ -194,6 +168,25 @@ class ValueString extends String {
             other.constructor === this.constructor &&
             this.valueOf() === other.valueOf());
     }
+    typeName() {
+        return this.getTypeName();
+    }
+    static typeName() {
+        return this.getTypeName();
+    }
+    getTypeName() {
+        return helpers.getTypeName(this);
+    }
+    static toString() {
+        return this.getTypeName();
+    }
+    static getTypeName() {
+        return helpers.getTypeName(this);
+    }
+    toJSONValue() {
+        var _a;
+        return (_a = eveble.kernel.serializer) === null || _a === void 0 ? void 0 : _a.toJSONValue(this);
+    }
     [util.inspect.custom]() {
         return `[${this.constructor.name}: '${this}']`;
     }
@@ -236,21 +229,20 @@ class ValueString extends String {
     sup() {
         return this.sup();
     }
+    static setValidator(validator) {
+        this.prototype.overrideHook('onValidation', 'validation', validator);
+    }
+    static getValidator() {
+        return this.prototype.getHook('onValidation', 'validation');
+    }
+    static removeValidator() {
+        this.prototype.removeHook('onValidation', 'validation');
+    }
+    static hasValidator() {
+        return this.prototype.hasHook('onValidation', 'validation');
+    }
 }
-ValueString.typeName = eveble.EjsonableMixin.typeName;
-ValueString.getTypeName = eveble.SerializableMixin.getTypeName;
-ValueString.toString = eveble.SerializableMixin.toString;
-ValueString.setValidator = ValidableMixin.setValidator;
-ValueString.getValidator = ValidableMixin.getValidator;
-ValueString.removeValidator = ValidableMixin.removeValidator;
-ValueString.hasValidator = ValidableMixin.hasValidator;
 const proto = ValueString.prototype;
-proto.typeName = eveble.EjsonableMixin.prototype.typeName;
-ValueString.typeName = eveble.EjsonableMixin.typeName;
-proto.getTypeName = eveble.SerializableMixin.prototype.getTypeName;
-ValueString.getTypeName = eveble.SerializableMixin.getTypeName;
-ValueString.toString = eveble.SerializableMixin.toString;
-proto.toJSONValue = eveble.SerializableMixin.prototype.toJSONValue;
 proto.registerHook = eveble.HookableMixin.prototype.registerHook;
 proto.overrideHook = eveble.HookableMixin.prototype.overrideHook;
 proto.getHook = eveble.HookableMixin.prototype.getHook;
@@ -260,10 +252,6 @@ proto.getActions = eveble.HookableMixin.prototype.getActions;
 proto.hasHook = eveble.HookableMixin.prototype.hasHook;
 proto.hasAction = eveble.HookableMixin.prototype.hasAction;
 proto.removeHook = eveble.HookableMixin.prototype.removeHook;
-ValueString.setValidator = ValidableMixin.setValidator;
-ValueString.getValidator = ValidableMixin.getValidator;
-ValueString.removeValidator = ValidableMixin.removeValidator;
-ValueString.hasValidator = ValidableMixin.hasValidator;
 
 exports.StandardError = class StandardError extends eveble.ValueObjectError {
 };
@@ -414,6 +402,21 @@ class ValueNumber extends Number {
     }
     [util.inspect.custom]() {
         return `[${this.constructor.name}: ${this}]`;
+    }
+}
+
+class ValidableMixin {
+    static setValidator(validator) {
+        this.prototype.overrideHook('onValidation', 'validation', validator);
+    }
+    static getValidator() {
+        return this.prototype.getHook('onValidation', 'validation');
+    }
+    static removeValidator() {
+        this.prototype.removeHook('onValidation', 'validation');
+    }
+    static hasValidator() {
+        return this.prototype.hasHook('onValidation', 'validation');
     }
 }
 

@@ -1,6 +1,7 @@
-import { ValueObjectError, define, DEFAULTS, EjsonableMixin, SerializableMixin, HookableMixin, kernel, ExtendableError } from '@eveble/eveble';
+import { ValueObjectError, define, DEFAULTS, HookableMixin, kernel, ExtendableError } from '@eveble/eveble';
 import { ApolloError } from 'apollo-server-core';
 import util from 'util';
+import { getTypeName } from '@eveble/helpers';
 
 /*! *****************************************************************************
 Copyright (c) Microsoft Corporation.
@@ -95,27 +96,9 @@ class I18nError extends ApolloError {
     }
 }
 
-class ValidableMixin {
-    static setValidator(validator) {
-        this.prototype.overrideHook('onValidation', 'validation', validator);
-    }
-    static getValidator() {
-        return this.prototype.getHook('onValidation', 'validation');
-    }
-    static removeValidator() {
-        this.prototype.removeHook('onValidation', 'validation');
-    }
-    static hasValidator() {
-        return this.prototype.hasHook('onValidation', 'validation');
-    }
-}
-
 class ValueString extends String {
     constructor(value) {
         super(value);
-        this.typeName = EjsonableMixin.prototype.typeName;
-        this.getTypeName = SerializableMixin.prototype.getTypeName;
-        this.toJSONValue = SerializableMixin.prototype.toJSONValue;
         this.registerHook = HookableMixin.prototype.registerHook;
         this.overrideHook = HookableMixin.prototype.overrideHook;
         this.getHook = HookableMixin.prototype.getHook;
@@ -127,15 +110,6 @@ class ValueString extends String {
         this.removeHook = HookableMixin.prototype.removeHook;
         this.onValidation(value);
         Object.defineProperties(this, {
-            typeName: {
-                enumerable: false,
-            },
-            getTypeName: {
-                enumerable: false,
-            },
-            toJSONValue: {
-                enumerable: false,
-            },
             registerHook: {
                 enumerable: false,
             },
@@ -188,6 +162,25 @@ class ValueString extends String {
             other.constructor === this.constructor &&
             this.valueOf() === other.valueOf());
     }
+    typeName() {
+        return this.getTypeName();
+    }
+    static typeName() {
+        return this.getTypeName();
+    }
+    getTypeName() {
+        return getTypeName(this);
+    }
+    static toString() {
+        return this.getTypeName();
+    }
+    static getTypeName() {
+        return getTypeName(this);
+    }
+    toJSONValue() {
+        var _a;
+        return (_a = kernel.serializer) === null || _a === void 0 ? void 0 : _a.toJSONValue(this);
+    }
     [util.inspect.custom]() {
         return `[${this.constructor.name}: '${this}']`;
     }
@@ -230,21 +223,20 @@ class ValueString extends String {
     sup() {
         return this.sup();
     }
+    static setValidator(validator) {
+        this.prototype.overrideHook('onValidation', 'validation', validator);
+    }
+    static getValidator() {
+        return this.prototype.getHook('onValidation', 'validation');
+    }
+    static removeValidator() {
+        this.prototype.removeHook('onValidation', 'validation');
+    }
+    static hasValidator() {
+        return this.prototype.hasHook('onValidation', 'validation');
+    }
 }
-ValueString.typeName = EjsonableMixin.typeName;
-ValueString.getTypeName = SerializableMixin.getTypeName;
-ValueString.toString = SerializableMixin.toString;
-ValueString.setValidator = ValidableMixin.setValidator;
-ValueString.getValidator = ValidableMixin.getValidator;
-ValueString.removeValidator = ValidableMixin.removeValidator;
-ValueString.hasValidator = ValidableMixin.hasValidator;
 const proto = ValueString.prototype;
-proto.typeName = EjsonableMixin.prototype.typeName;
-ValueString.typeName = EjsonableMixin.typeName;
-proto.getTypeName = SerializableMixin.prototype.getTypeName;
-ValueString.getTypeName = SerializableMixin.getTypeName;
-ValueString.toString = SerializableMixin.toString;
-proto.toJSONValue = SerializableMixin.prototype.toJSONValue;
 proto.registerHook = HookableMixin.prototype.registerHook;
 proto.overrideHook = HookableMixin.prototype.overrideHook;
 proto.getHook = HookableMixin.prototype.getHook;
@@ -254,10 +246,6 @@ proto.getActions = HookableMixin.prototype.getActions;
 proto.hasHook = HookableMixin.prototype.hasHook;
 proto.hasAction = HookableMixin.prototype.hasAction;
 proto.removeHook = HookableMixin.prototype.removeHook;
-ValueString.setValidator = ValidableMixin.setValidator;
-ValueString.getValidator = ValidableMixin.getValidator;
-ValueString.removeValidator = ValidableMixin.removeValidator;
-ValueString.hasValidator = ValidableMixin.hasValidator;
 
 let StandardError = class StandardError extends ValueObjectError {
 };
@@ -408,6 +396,21 @@ class ValueNumber extends Number {
     }
     [util.inspect.custom]() {
         return `[${this.constructor.name}: ${this}]`;
+    }
+}
+
+class ValidableMixin {
+    static setValidator(validator) {
+        this.prototype.overrideHook('onValidation', 'validation', validator);
+    }
+    static getValidator() {
+        return this.prototype.getHook('onValidation', 'validation');
+    }
+    static removeValidator() {
+        this.prototype.removeHook('onValidation', 'validation');
+    }
+    static hasValidator() {
+        return this.prototype.hasHook('onValidation', 'validation');
     }
 }
 

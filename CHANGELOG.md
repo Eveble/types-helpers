@@ -1,3 +1,11 @@
+## [1.4.1](https://github.com/eveble/types-helpers/compare/v1.4.0...v1.4.1) (2021-05-08)
+
+
+### Bug Fixes
+
+* define proto methods non-enumerable on ValueString ([0cfd713](https://github.com/eveble/types-helpers/commit/0cfd713378c01cda8ac134067efb21c8e66f91f5))
+* defines methods as instance members ([0958eb5](https://github.com/eveble/types-helpers/commit/0958eb5460d40db046c899463f66e25cf9965718))
+
 # [1.4.0](https://github.com/eveble/types-helpers/compare/v1.3.0...v1.4.0) (2021-05-07)
 
 
