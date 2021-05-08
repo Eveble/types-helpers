@@ -7,6 +7,7 @@ export declare class ValueString extends ValueString_base {
     equals(other: any): boolean;
     toString(): string;
     valueOf(): string;
+    toPlainObject(): string;
     anchor(): string;
     big(): string;
     blink(): string;

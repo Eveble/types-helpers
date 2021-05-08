@@ -1,3 +1,10 @@
+# [2.2.0](https://github.com/eveble/types-helpers/compare/v2.1.0...v2.2.0) (2021-05-08)
+
+
+### Features
+
+* add toPlainObject method ([049cd82](https://github.com/eveble/types-helpers/commit/049cd8276bde5c216c35ccb483db507fab8c666d))
+
 # [2.1.0](https://github.com/eveble/types-helpers/compare/v2.0.0...v2.1.0) (2021-05-08)
 
 

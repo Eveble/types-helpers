@@ -134,6 +134,9 @@ class ValueString extends classes(String, EjsonableMixin, HookableMixin, Validab
     valueOf() {
         return this.value;
     }
+    toPlainObject() {
+        return this.valueOf();
+    }
     anchor() {
         return this.anchor();
     }
@@ -196,6 +199,9 @@ class ValueString extends classes(String, EjsonableMixin, HookableMixin, Validab
 class ValueNumber extends Number {
     constructor(value) {
         super(value);
+    }
+    toPlainObject() {
+        return this.valueOf();
     }
     equals(other) {
         return (other !== null &&
