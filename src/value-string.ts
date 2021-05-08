@@ -1,12 +1,42 @@
 import util from 'util';
 import { EvebleTypes, kernel, HookableMixin } from '@eveble/eveble';
 import { getTypeName } from '@eveble/helpers';
-import { ValidableMixin } from './mixins/validable-mixin';
 
 export class ValueString extends String implements EvebleTypes.Hookable {
   constructor(value: string) {
     super(value);
     this.onValidation(value);
+
+    Object.defineProperties(this, {
+      // HookableMixin
+      registerHook: {
+        enumerable: false,
+      },
+      overrideHook: {
+        enumerable: false,
+      },
+      getHook: {
+        enumerable: false,
+      },
+      getHookOrThrow: {
+        enumerable: false,
+      },
+      getHooks: {
+        enumerable: false,
+      },
+      getActions: {
+        enumerable: false,
+      },
+      hasHook: {
+        enumerable: false,
+      },
+      hasAction: {
+        enumerable: false,
+      },
+      removeHook: {
+        enumerable: false,
+      },
+    });
   }
 
   /**
