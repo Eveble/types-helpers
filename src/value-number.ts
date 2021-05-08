@@ -5,6 +5,10 @@ export class ValueNumber extends Number {
     super(value);
   }
 
+  public toPlainObject(): number {
+    return this.valueOf();
+  }
+
   /**
    * Evaluates if value and value's type of passed other instance are equal to current one.
    * @param  other - Other instance.

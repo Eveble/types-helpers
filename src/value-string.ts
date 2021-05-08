@@ -58,6 +58,10 @@ export class ValueString extends classes(
     return this.value;
   }
 
+  public toPlainObject(): string {
+    return this.valueOf();
+  }
+
   /**
    * @remarks Fix generating documentation by wrapping `<HTML_TAG>` tags in ticks, else error is thrown: `Expected corresponding JSX closing tag for `<HTML_AG>`
    */

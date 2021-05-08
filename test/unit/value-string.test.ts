@@ -42,6 +42,9 @@ describe('ValueString', () => {
     it('valueOf', () => {
       expect(new ValueString('foo').valueOf()).to.be.equal('foo');
     });
+    it('toPlainObject', () => {
+      expect(new ValueString('foo').toPlainObject()).to.be.equal('foo');
+    });
   });
 
   describe('comparison', () => {

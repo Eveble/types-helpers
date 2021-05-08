@@ -36,4 +36,10 @@ describe('ValueNumber', () => {
       });
     });
   });
+
+  describe('conversion', () => {
+    it('toPlainObject', () => {
+      expect(new ValueNumber(2).toPlainObject()).to.be.equal(2);
+    });
+  });
 });
