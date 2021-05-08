@@ -27,6 +27,19 @@ export class ValueString extends classes(
   protected value: string;
 
   /**
+   * Evaluates if value and value's type of passed other instance are equal to current one.
+   * @param  other - Other instance of.
+   * @returns Returns `true` if other instance of `ValueString` is equal, else `false`.
+   */
+  public equals(other: any): boolean {
+    return (
+      other !== null &&
+      other.constructor === this.constructor &&
+      this.valueOf() === other.valueOf()
+    );
+  }
+
+  /**
    * Re-implement custom inspection in console.log do to issue with `polytype` `classes` mixin resolving
    * provided string as an Object with key-value pairs as text(so 'bar' becomes {0: "b", 1: "a", 2: "r"})
    * @remarks

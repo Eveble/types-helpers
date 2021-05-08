@@ -7,6 +7,9 @@ import { ValueString } from '../../src/value-string';
 chai.use(sinonChai);
 
 describe('ValueString', () => {
+  class MyValue extends ValueString {}
+  class MyOtherValue extends ValueString {}
+
   beforeEach(() => {
     kernel.enableValidation();
   });
@@ -38,6 +41,29 @@ describe('ValueString', () => {
     });
     it('valueOf', () => {
       expect(new ValueString('foo').valueOf()).to.be.equal('foo');
+    });
+  });
+
+  describe('comparison', () => {
+    describe('equality', () => {
+      it('is not equal if compared with a null value', () => {
+        expect(new MyValue('my-value').equals(null)).to.be.false;
+      });
+
+      it('returns true if both instance are equal', () => {
+        expect(new MyValue('my-value').equals(new MyValue('my-value'))).to.be
+          .true;
+      });
+
+      it('returns false if one instance is different from other by values', () => {
+        expect(new MyValue('my-value').equals(new MyValue('my-other-value'))).to
+          .be.false;
+      });
+
+      it('returns false if one instance has different type then other', () => {
+        expect(new MyValue('my-value').equals(new MyOtherValue('my-value'))).to
+          .be.false;
+      });
     });
   });
 
