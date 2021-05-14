@@ -1,3 +1,10 @@
+## [2.3.1](https://github.com/eveble/types-helpers/compare/v2.3.0...v2.3.1) (2021-05-14)
+
+
+### Bug Fixes
+
+* return ValueTransformer type on transformer generator method ([dfec49f](https://github.com/eveble/types-helpers/commit/dfec49fe880d4e8e6d3a6d1def09b08dcdb5ec17))
+
 # [2.3.0](https://github.com/eveble/types-helpers/compare/v2.2.0...v2.3.0) (2021-05-14)
 
 
