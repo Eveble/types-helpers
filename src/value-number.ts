@@ -1,4 +1,5 @@
 import util from 'util';
+import { ValueTransformer } from 'typeorm';
 
 export class ValueNumber extends Number {
   constructor(value: number) {
@@ -36,7 +37,7 @@ export class ValueNumber extends Number {
   /**
    * Returns `@Column` transformer for TypeORM.
    */
-  public static transformer = function () {
+  public static transformer = function (): ValueTransformer {
     // eslint-disable-next-line @typescript-eslint/no-this-alias
     const Self = this;
     return {
