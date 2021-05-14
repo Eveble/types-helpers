@@ -162,4 +162,23 @@ export class ValueString extends classes(
 
     return true;
   }
+
+  /**
+   * Returns `@Column` transformer for TypeORM.
+   */
+  public static transformer = function () {
+    // eslint-disable-next-line @typescript-eslint/no-this-alias
+    const Self = this;
+    return {
+      to: (instance: typeof Self) => {
+        if (instance === undefined) {
+          return undefined;
+        }
+        return instance.valueOf();
+      },
+      from: (value: string) => {
+        return new Self(value);
+      },
+    };
+  };
 }

@@ -41,5 +41,18 @@ describe('ValueNumber', () => {
     it('toPlainObject', () => {
       expect(new ValueNumber(2).toPlainObject()).to.be.equal(2);
     });
+
+    describe('transformer', () => {
+      it('to', () => {
+        const transformer = MyValue.transformer();
+        expect(transformer.to(new MyValue(1))).to.be.equal(1);
+      });
+      it('from', () => {
+        const transformer = MyValue.transformer();
+        const result = transformer.from(1);
+        expect(result).to.be.instanceof(MyValue);
+        expect(result).to.be.eql(new MyValue(1));
+      });
+    });
   });
 });

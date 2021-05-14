@@ -32,4 +32,23 @@ export class ValueNumber extends Number {
   [util.inspect.custom as symbol]() {
     return `[${this.constructor.name}: ${this}]`;
   }
+
+  /**
+   * Returns `@Column` transformer for TypeORM.
+   */
+  public static transformer = function () {
+    // eslint-disable-next-line @typescript-eslint/no-this-alias
+    const Self = this;
+    return {
+      to: (instance: typeof Self) => {
+        if (instance === undefined) {
+          return undefined;
+        }
+        return instance.valueOf();
+      },
+      from: (value: number) => {
+        return new Self(value);
+      },
+    };
+  };
 }

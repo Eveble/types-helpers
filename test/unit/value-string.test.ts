@@ -39,11 +39,26 @@ describe('ValueString', () => {
     it('toString', () => {
       expect(new ValueString('foo').toString()).to.be.equal('foo');
     });
+
     it('valueOf', () => {
       expect(new ValueString('foo').valueOf()).to.be.equal('foo');
     });
+
     it('toPlainObject', () => {
       expect(new ValueString('foo').toPlainObject()).to.be.equal('foo');
+    });
+
+    describe('transformer', () => {
+      it('to', () => {
+        const transformer = MyValue.transformer();
+        expect(transformer.to(new MyValue('my-value'))).to.be.equal('my-value');
+      });
+      it('from', () => {
+        const transformer = MyValue.transformer();
+        const result = transformer.from('my-value');
+        expect(result).to.be.instanceof(MyValue);
+        expect(result).to.be.eql(new MyValue('my-value'));
+      });
     });
   });
 
