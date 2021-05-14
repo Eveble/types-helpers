@@ -22,5 +22,9 @@ export declare class ValueString extends ValueString_base {
     sub(): string;
     sup(): string;
     protected onValidation(value: string, isStrict?: boolean): boolean;
+    static transformer: () => {
+        to: (instance: any) => any;
+        from: (value: string) => any;
+    };
 }
 export {};
