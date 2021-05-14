@@ -201,6 +201,20 @@ class ValueString extends polytype.classes(String, eveble.EjsonableMixin, eveble
         return true;
     }
 }
+ValueString.transformer = function () {
+    const Self = this;
+    return {
+        to: (instance) => {
+            if (instance === undefined) {
+                return undefined;
+            }
+            return instance.valueOf();
+        },
+        from: (value) => {
+            return new Self(value);
+        },
+    };
+};
 
 class ValueNumber extends Number {
     constructor(value) {
@@ -218,6 +232,20 @@ class ValueNumber extends Number {
         return `[${this.constructor.name}: ${this}]`;
     }
 }
+ValueNumber.transformer = function () {
+    const Self = this;
+    return {
+        to: (instance) => {
+            if (instance === undefined) {
+                return undefined;
+            }
+            return instance.valueOf();
+        },
+        from: (value) => {
+            return new Self(value);
+        },
+    };
+};
 
 exports.StandardError = class StandardError extends eveble.ValueObjectError {
 };

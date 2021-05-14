@@ -1,3 +1,10 @@
+# [2.3.0](https://github.com/eveble/types-helpers/compare/v2.2.0...v2.3.0) (2021-05-14)
+
+
+### Features
+
+* add Column transformator generator for TypeORM ([ea92725](https://github.com/eveble/types-helpers/commit/ea92725efb736e2fcda3fb339d63a89c8cea40bf))
+
 # [2.2.0](https://github.com/eveble/types-helpers/compare/v2.1.0...v2.2.0) (2021-05-08)
 
 
