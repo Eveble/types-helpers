@@ -8,6 +8,7 @@ var eveble = require('@eveble/eveble');
 var apolloServerCore = require('apollo-server-core');
 var util = _interopDefault(require('util'));
 var polytype = require('polytype');
+var helpers = require('@eveble/helpers');
 
 /*! *****************************************************************************
 Copyright (c) Microsoft Corporation.
@@ -219,6 +220,45 @@ ValueString.transformer = function () {
 class ValueNumber extends Number {
     constructor(value) {
         super(value);
+        this.registerHook = eveble.HookableMixin.prototype.registerHook;
+        this.overrideHook = eveble.HookableMixin.prototype.overrideHook;
+        this.getHook = eveble.HookableMixin.prototype.getHook;
+        this.getHookOrThrow = eveble.HookableMixin.prototype.getHookOrThrow;
+        this.getHooks = eveble.HookableMixin.prototype.getHooks;
+        this.getActions = eveble.HookableMixin.prototype.getActions;
+        this.hasHook = eveble.HookableMixin.prototype.hasHook;
+        this.hasAction = eveble.HookableMixin.prototype.hasAction;
+        this.removeHook = eveble.HookableMixin.prototype.removeHook;
+        this.onValidation(value);
+        Object.defineProperties(this, {
+            registerHook: {
+                enumerable: false,
+            },
+            overrideHook: {
+                enumerable: false,
+            },
+            getHook: {
+                enumerable: false,
+            },
+            getHookOrThrow: {
+                enumerable: false,
+            },
+            getHooks: {
+                enumerable: false,
+            },
+            getActions: {
+                enumerable: false,
+            },
+            hasHook: {
+                enumerable: false,
+            },
+            hasAction: {
+                enumerable: false,
+            },
+            removeHook: {
+                enumerable: false,
+            },
+        });
     }
     toPlainObject() {
         return this.valueOf();
@@ -230,6 +270,55 @@ class ValueNumber extends Number {
     }
     [util.inspect.custom]() {
         return `[${this.constructor.name}: ${this}]`;
+    }
+    typeName() {
+        return this.getTypeName();
+    }
+    static typeName() {
+        return this.getTypeName();
+    }
+    getTypeName() {
+        return helpers.getTypeName(this);
+    }
+    static toString() {
+        return this.getTypeName();
+    }
+    static getTypeName() {
+        return helpers.getTypeName(this);
+    }
+    toJSONValue() {
+        var _a;
+        return (_a = eveble.kernel.serializer) === null || _a === void 0 ? void 0 : _a.toJSONValue(this);
+    }
+    onValidation(value, isStrict = true) {
+        if (!eveble.kernel.isValidating()) {
+            return true;
+        }
+        try {
+            eveble.kernel.validator.validate(value, Number, isStrict);
+        }
+        catch (error) {
+            const { message } = error;
+            const typeName = this.getTypeName();
+            throw new error.constructor(`${typeName}: ${message}`);
+        }
+        const hooks = this.getHooks('onValidation');
+        for (const hook of Object.values(hooks)) {
+            hook.bind(this)(value);
+        }
+        return true;
+    }
+    static setValidator(validator) {
+        this.prototype.overrideHook('onValidation', 'validation', validator);
+    }
+    static getValidator() {
+        return this.prototype.getHook('onValidation', 'validation');
+    }
+    static removeValidator() {
+        this.prototype.removeHook('onValidation', 'validation');
+    }
+    static hasValidator() {
+        return this.prototype.hasHook('onValidation', 'validation');
     }
 }
 ValueNumber.transformer = function () {
@@ -246,6 +335,16 @@ ValueNumber.transformer = function () {
         },
     };
 };
+const proto = ValueNumber.prototype;
+proto.registerHook = eveble.HookableMixin.prototype.registerHook;
+proto.overrideHook = eveble.HookableMixin.prototype.overrideHook;
+proto.getHook = eveble.HookableMixin.prototype.getHook;
+proto.getHookOrThrow = eveble.HookableMixin.prototype.getHookOrThrow;
+proto.getHooks = eveble.HookableMixin.prototype.getHooks;
+proto.getActions = eveble.HookableMixin.prototype.getActions;
+proto.hasHook = eveble.HookableMixin.prototype.hasHook;
+proto.hasAction = eveble.HookableMixin.prototype.hasAction;
+proto.removeHook = eveble.HookableMixin.prototype.removeHook;
 
 exports.StandardError = class StandardError extends eveble.ValueObjectError {
 };

@@ -2,6 +2,7 @@ import { ValueObjectError, define, DEFAULTS, EjsonableMixin, HookableMixin, kern
 import { ApolloError } from 'apollo-server-core';
 import util from 'util';
 import { classes } from 'polytype';
+import { getTypeName } from '@eveble/helpers';
 
 /*! *****************************************************************************
 Copyright (c) Microsoft Corporation.
@@ -213,6 +214,45 @@ ValueString.transformer = function () {
 class ValueNumber extends Number {
     constructor(value) {
         super(value);
+        this.registerHook = HookableMixin.prototype.registerHook;
+        this.overrideHook = HookableMixin.prototype.overrideHook;
+        this.getHook = HookableMixin.prototype.getHook;
+        this.getHookOrThrow = HookableMixin.prototype.getHookOrThrow;
+        this.getHooks = HookableMixin.prototype.getHooks;
+        this.getActions = HookableMixin.prototype.getActions;
+        this.hasHook = HookableMixin.prototype.hasHook;
+        this.hasAction = HookableMixin.prototype.hasAction;
+        this.removeHook = HookableMixin.prototype.removeHook;
+        this.onValidation(value);
+        Object.defineProperties(this, {
+            registerHook: {
+                enumerable: false,
+            },
+            overrideHook: {
+                enumerable: false,
+            },
+            getHook: {
+                enumerable: false,
+            },
+            getHookOrThrow: {
+                enumerable: false,
+            },
+            getHooks: {
+                enumerable: false,
+            },
+            getActions: {
+                enumerable: false,
+            },
+            hasHook: {
+                enumerable: false,
+            },
+            hasAction: {
+                enumerable: false,
+            },
+            removeHook: {
+                enumerable: false,
+            },
+        });
     }
     toPlainObject() {
         return this.valueOf();
@@ -224,6 +264,55 @@ class ValueNumber extends Number {
     }
     [util.inspect.custom]() {
         return `[${this.constructor.name}: ${this}]`;
+    }
+    typeName() {
+        return this.getTypeName();
+    }
+    static typeName() {
+        return this.getTypeName();
+    }
+    getTypeName() {
+        return getTypeName(this);
+    }
+    static toString() {
+        return this.getTypeName();
+    }
+    static getTypeName() {
+        return getTypeName(this);
+    }
+    toJSONValue() {
+        var _a;
+        return (_a = kernel.serializer) === null || _a === void 0 ? void 0 : _a.toJSONValue(this);
+    }
+    onValidation(value, isStrict = true) {
+        if (!kernel.isValidating()) {
+            return true;
+        }
+        try {
+            kernel.validator.validate(value, Number, isStrict);
+        }
+        catch (error) {
+            const { message } = error;
+            const typeName = this.getTypeName();
+            throw new error.constructor(`${typeName}: ${message}`);
+        }
+        const hooks = this.getHooks('onValidation');
+        for (const hook of Object.values(hooks)) {
+            hook.bind(this)(value);
+        }
+        return true;
+    }
+    static setValidator(validator) {
+        this.prototype.overrideHook('onValidation', 'validation', validator);
+    }
+    static getValidator() {
+        return this.prototype.getHook('onValidation', 'validation');
+    }
+    static removeValidator() {
+        this.prototype.removeHook('onValidation', 'validation');
+    }
+    static hasValidator() {
+        return this.prototype.hasHook('onValidation', 'validation');
     }
 }
 ValueNumber.transformer = function () {
@@ -240,6 +329,16 @@ ValueNumber.transformer = function () {
         },
     };
 };
+const proto = ValueNumber.prototype;
+proto.registerHook = HookableMixin.prototype.registerHook;
+proto.overrideHook = HookableMixin.prototype.overrideHook;
+proto.getHook = HookableMixin.prototype.getHook;
+proto.getHookOrThrow = HookableMixin.prototype.getHookOrThrow;
+proto.getHooks = HookableMixin.prototype.getHooks;
+proto.getActions = HookableMixin.prototype.getActions;
+proto.hasHook = HookableMixin.prototype.hasHook;
+proto.hasAction = HookableMixin.prototype.hasAction;
+proto.removeHook = HookableMixin.prototype.removeHook;
 
 let StandardError = class StandardError extends ValueObjectError {
 };
