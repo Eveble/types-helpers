@@ -1,6 +1,6 @@
 {
   "name": "@eveble/types-helpers",
-  "version": "2.3.2",
+  "version": "2.3.3",
   "description": "Helpers for domains using DDD types",
   "main": "dist/index.js",
   "module": "dist/index.es.js",
