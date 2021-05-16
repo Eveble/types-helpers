@@ -137,7 +137,7 @@ export class ValueString extends classes(
 
   /**
    * On validation hook.
-   * @param value - Value as a string.
+   * @param value - Value as a `string`.
    * @param isStrict - Flag indicating that validation should be done in strict mode.
    * @returns Returns `true` on valid value, else throws.
    * @throws {Error}
