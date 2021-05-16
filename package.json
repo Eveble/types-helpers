@@ -31,6 +31,7 @@
     "ttypescript": "^1.5.10",
     "polytype": "^0.9.4",
     "@eveble/eveble": "latest",
+    "@eveble/helpers": "latest",
     "graphql": "latest",
     "apollo-server-core": "latest",
     "typeorm": "latest"
