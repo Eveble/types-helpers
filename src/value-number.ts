@@ -4,12 +4,18 @@ import { getTypeName } from '@eveble/helpers';
 import { EvebleTypes, kernel, HookableMixin } from '@eveble/eveble';
 
 export class ValueNumber extends Number {
+  protected value: number;
+
   constructor(value: number) {
     super(value);
 
     this.onValidation(value);
 
     Object.defineProperties(this, {
+      value: {
+        value,
+        enumerable: false,
+      },
       // HookableMixin
       registerHook: {
         enumerable: false,
@@ -39,6 +45,14 @@ export class ValueNumber extends Number {
         enumerable: false,
       },
     });
+  }
+
+  public toString(): string {
+    return `${this.value}`;
+  }
+
+  public valueOf(): number {
+    return this.value;
   }
 
   public toPlainObject(): number {

@@ -47,6 +47,14 @@ describe('ValueNumber', () => {
   });
 
   describe('conversion', () => {
+    it('toString', () => {
+      expect(new ValueNumber(1).toString()).to.be.equal('1');
+    });
+
+    it('valueOf', () => {
+      expect(new ValueNumber(1).valueOf()).to.be.equal(1);
+    });
+
     it('toPlainObject', () => {
       expect(new ValueNumber(2).toPlainObject()).to.be.equal(2);
     });
