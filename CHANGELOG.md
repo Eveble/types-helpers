@@ -1,3 +1,10 @@
+## [2.3.2](https://github.com/eveble/types-helpers/compare/v2.3.1...v2.3.2) (2021-05-16)
+
+
+### Bug Fixes
+
+* apply HookableMixin to ValueNumber ([86ac709](https://github.com/eveble/types-helpers/commit/86ac709a4decf5c0604145e6af84ee5cb1fe07e4))
+
 ## [2.3.1](https://github.com/eveble/types-helpers/compare/v2.3.0...v2.3.1) (2021-05-14)
 
 
