@@ -424,9 +424,9 @@
     underscore "~1.8.3"
 
 "@eveble/eveble@latest":
-  version "2.0.1"
-  resolved "https://registry.yarnpkg.com/@eveble/eveble/-/eveble-2.0.1.tgz#09488be18dab1b356a5211a75a5241ae623a2745"
-  integrity sha512-4w4dbjQ38m/hR2UnUdOQGO+nxtsfDmT1LUpCd+LubFxuGwx0zt8idTpFReXs8d7I3zk4QWkbNq9Dbz+3Ih1lww==
+  version "2.2.1"
+  resolved "https://registry.yarnpkg.com/@eveble/eveble/-/eveble-2.2.1.tgz#e978eeb176dcbf0d5e73443c391497b4dcc25ed2"
+  integrity sha512-p9UkCXI4V5ySB9Z4Uz26vf2DrT7mLpnABH/9dyG//kdnPCEkATTzc2xuyjCtsQQrbdXoNc1lXOq+A9uKOVKiTQ==
   dependencies:
     "@eveble/core" latest
     "@eveble/ejson" latest
@@ -437,6 +437,7 @@
     agenda "^3.1.0"
     chalk "^3.0.0"
     decache "^4.6.0"
+    deep-diff "^1.0.2"
     deepmerge "^4.2.2"
     dotenv "^8.2.0"
     dotenv-expand "^5.1.0"
