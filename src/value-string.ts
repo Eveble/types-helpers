@@ -165,6 +165,15 @@ export class ValueString extends classes(
   }
 
   /**
+   * Create an instance of `this`.
+   * @param value - Value as a `string`.
+   * @returns New instance of `this`.
+   */
+  public static from(value: string): any {
+    return new this(value);
+  }
+
+  /**
    * Returns `@Column` transformer for TypeORM.
    */
   public static transformer = function (): ValueTransformer {

@@ -35,6 +35,15 @@ describe('ValueString', () => {
     expect(new ValueString('foo')).not.to.be.eql(new ValueString('bar'));
   });
 
+  describe('creation', () => {
+    it('from', () => {
+      const value = 'foo';
+      const result = MyValue.from(value);
+      expect(result).to.be.instanceof(MyValue);
+      expect(result.valueOf()).to.be.equal(value);
+    });
+  });
+
   describe('conversion', () => {
     it('toString', () => {
       expect(new ValueString('foo').toString()).to.be.equal('foo');
