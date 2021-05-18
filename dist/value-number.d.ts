@@ -1,7 +1,10 @@
 import { ValueTransformer } from 'typeorm';
 import { EvebleTypes } from '@eveble/eveble';
 export declare class ValueNumber extends Number {
+    protected value: number;
     constructor(value: number);
+    toString(): string;
+    valueOf(): number;
     toPlainObject(): number;
     equals(other: any): boolean;
     typeName(): EvebleTypes.TypeName;

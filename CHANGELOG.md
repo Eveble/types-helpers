@@ -1,3 +1,10 @@
+## [2.3.3](https://github.com/eveble/types-helpers/compare/v2.3.2...v2.3.3) (2021-05-16)
+
+
+### Bug Fixes
+
+* implement toString, valueOf ([8132945](https://github.com/eveble/types-helpers/commit/81329453ca2ab30594518a034b6a6882ec91cc02))
+
 ## [2.3.2](https://github.com/eveble/types-helpers/compare/v2.3.1...v2.3.2) (2021-05-16)
 
 

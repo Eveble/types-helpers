@@ -231,6 +231,10 @@ class ValueNumber extends Number {
         this.removeHook = eveble.HookableMixin.prototype.removeHook;
         this.onValidation(value);
         Object.defineProperties(this, {
+            value: {
+                value,
+                enumerable: false,
+            },
             registerHook: {
                 enumerable: false,
             },
@@ -259,6 +263,12 @@ class ValueNumber extends Number {
                 enumerable: false,
             },
         });
+    }
+    toString() {
+        return `${this.value}`;
+    }
+    valueOf() {
+        return this.value;
     }
     toPlainObject() {
         return this.valueOf();
