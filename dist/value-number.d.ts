@@ -22,6 +22,7 @@ export declare class ValueNumber extends Number {
     hasHook: (action: string, id: string) => boolean;
     hasAction: (action: string) => boolean;
     removeHook: (action: string, id: string) => void;
+    static from(value: number): any;
     static transformer: () => ValueTransformer;
     protected onValidation(value: number, isStrict?: boolean): boolean;
     static setValidator(validator: (...args: any[]) => boolean): void;

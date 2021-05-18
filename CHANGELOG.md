@@ -1,3 +1,11 @@
+# [2.4.0](https://github.com/eveble/types-helpers/compare/v2.3.4...v2.4.0) (2021-05-18)
+
+
+### Features
+
+* add from static method to ValueNumber ([0c7efd4](https://github.com/eveble/types-helpers/commit/0c7efd4834fc455eb808ad26ceda890187628ee0))
+* add from static method to ValueString ([8a21b1b](https://github.com/eveble/types-helpers/commit/8a21b1b031fbf66ff9378750ae764f7234747b27))
+
 ## [2.3.4](https://github.com/eveble/types-helpers/compare/v2.3.3...v2.3.4) (2021-05-18)
 
 

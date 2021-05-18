@@ -195,6 +195,9 @@ class ValueString extends classes(String, EjsonableMixin, HookableMixin, Validab
         }
         return true;
     }
+    static from(value) {
+        return new this(value);
+    }
 }
 ValueString.transformer = function () {
     const Self = this;
@@ -303,6 +306,9 @@ class ValueNumber extends Number {
     toJSONValue() {
         var _a;
         return (_a = kernel.serializer) === null || _a === void 0 ? void 0 : _a.toJSONValue(this);
+    }
+    static from(value) {
+        return new this(value);
     }
     onValidation(value, isStrict = true) {
         if (!kernel.isValidating()) {

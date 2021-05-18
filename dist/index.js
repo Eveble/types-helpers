@@ -201,6 +201,9 @@ class ValueString extends polytype.classes(String, eveble.EjsonableMixin, eveble
         }
         return true;
     }
+    static from(value) {
+        return new this(value);
+    }
 }
 ValueString.transformer = function () {
     const Self = this;
@@ -309,6 +312,9 @@ class ValueNumber extends Number {
     toJSONValue() {
         var _a;
         return (_a = eveble.kernel.serializer) === null || _a === void 0 ? void 0 : _a.toJSONValue(this);
+    }
+    static from(value) {
+        return new this(value);
     }
     onValidation(value, isStrict = true) {
         if (!eveble.kernel.isValidating()) {
