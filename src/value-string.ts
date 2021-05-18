@@ -175,9 +175,19 @@ export class ValueString extends classes(
         if (instance === undefined) {
           return undefined;
         }
+        if (Array.isArray(instance)) {
+          return instance.map((item) => {
+            return item.valueOf();
+          });
+        }
         return instance.valueOf();
       },
-      from: (value: string) => {
+      from: (value: string | string[]) => {
+        if (Array.isArray(value)) {
+          return value.map((item) => {
+            return new Self(item);
+          });
+        }
         return new Self(value);
       },
     };

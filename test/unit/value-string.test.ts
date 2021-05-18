@@ -49,15 +49,35 @@ describe('ValueString', () => {
     });
 
     describe('transformer', () => {
-      it('to', () => {
-        const transformer = MyValue.transformer();
-        expect(transformer.to(new MyValue('my-value'))).to.be.equal('my-value');
+      describe('as single instance', () => {
+        it('to', () => {
+          const transformer = MyValue.transformer();
+          expect(transformer.to(new MyValue('my-value'))).to.be.equal(
+            'my-value'
+          );
+        });
+        it('from', () => {
+          const transformer = MyValue.transformer();
+          const result = transformer.from('my-value');
+          expect(result).to.be.instanceof(MyValue);
+          expect(result).to.be.eql(new MyValue('my-value'));
+        });
       });
-      it('from', () => {
-        const transformer = MyValue.transformer();
-        const result = transformer.from('my-value');
-        expect(result).to.be.instanceof(MyValue);
-        expect(result).to.be.eql(new MyValue('my-value'));
+
+      describe('as array', () => {
+        it('to', () => {
+          const transformer = MyValue.transformer();
+          expect(
+            transformer.to([new MyValue('first'), new MyValue('second')])
+          ).to.have.members(['first', 'second']);
+        });
+        it('from', () => {
+          const transformer = MyValue.transformer();
+          const result = transformer.from(['first', 'second']);
+          expect(result).to.be.an('array');
+          expect(result[0]).to.be.eql(new MyValue('first'));
+          expect(result[1]).to.be.eql(new MyValue('second'));
+        });
       });
     });
   });
