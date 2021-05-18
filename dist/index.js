@@ -209,9 +209,19 @@ ValueString.transformer = function () {
             if (instance === undefined) {
                 return undefined;
             }
+            if (Array.isArray(instance)) {
+                return instance.map((item) => {
+                    return item.valueOf();
+                });
+            }
             return instance.valueOf();
         },
         from: (value) => {
+            if (Array.isArray(value)) {
+                return value.map((item) => {
+                    return new Self(item);
+                });
+            }
             return new Self(value);
         },
     };
@@ -338,9 +348,19 @@ ValueNumber.transformer = function () {
             if (instance === undefined) {
                 return undefined;
             }
+            if (Array.isArray(instance)) {
+                return instance.map((item) => {
+                    return item.valueOf();
+                });
+            }
             return instance.valueOf();
         },
         from: (value) => {
+            if (Array.isArray(value)) {
+                return value.map((item) => {
+                    return new Self(item);
+                });
+            }
             return new Self(value);
         },
     };

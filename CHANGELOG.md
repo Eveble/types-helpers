@@ -1,3 +1,11 @@
+## [2.3.4](https://github.com/eveble/types-helpers/compare/v2.3.3...v2.3.4) (2021-05-18)
+
+
+### Bug Fixes
+
+* add support for transforming array of ValueNumbers ([830a695](https://github.com/eveble/types-helpers/commit/830a6957733d86aee69ae0a66dc79295d934cf53))
+* add support for transforming array of ValueStrings ([88ca409](https://github.com/eveble/types-helpers/commit/88ca40938f13020f63a7f07e913372826b795250))
+
 ## [2.3.3](https://github.com/eveble/types-helpers/compare/v2.3.2...v2.3.3) (2021-05-16)
 
 
