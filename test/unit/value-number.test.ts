@@ -60,15 +60,32 @@ describe('ValueNumber', () => {
     });
 
     describe('transformer', () => {
-      it('to', () => {
-        const transformer = MyValue.transformer();
-        expect(transformer.to(new MyValue(1))).to.be.equal(1);
+      describe('as single instance', () => {
+        it('to', () => {
+          const transformer = MyValue.transformer();
+          expect(transformer.to(new MyValue(1))).to.be.equal(1);
+        });
+        it('from', () => {
+          const transformer = MyValue.transformer();
+          const result = transformer.from(1);
+          expect(result).to.be.instanceof(MyValue);
+          expect(result).to.be.eql(new MyValue(1));
+        });
       });
-      it('from', () => {
-        const transformer = MyValue.transformer();
-        const result = transformer.from(1);
-        expect(result).to.be.instanceof(MyValue);
-        expect(result).to.be.eql(new MyValue(1));
+      describe('as array', () => {
+        it('to', () => {
+          const transformer = MyValue.transformer();
+          expect(
+            transformer.to([new MyValue(1), new MyValue(2)])
+          ).to.have.members([1, 2]);
+        });
+        it('from', () => {
+          const transformer = MyValue.transformer();
+          const result = transformer.from([1, 2]);
+          expect(result).to.be.an('array');
+          expect(result[0]).to.be.eql(new MyValue(1));
+          expect(result[1]).to.be.eql(new MyValue(2));
+        });
       });
     });
   });
