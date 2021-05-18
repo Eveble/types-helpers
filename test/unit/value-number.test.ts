@@ -26,6 +26,15 @@ describe('ValueNumber', () => {
     expect(new ValueNumber(2)).not.to.be.eql(new ValueNumber(3));
   });
 
+  describe('creation', () => {
+    it('from', () => {
+      const value = 1;
+      const result = MyValue.from(value);
+      expect(result).to.be.instanceof(MyValue);
+      expect(result.valueOf()).to.be.equal(value);
+    });
+  });
+
   describe('comparison', () => {
     describe('equality', () => {
       it('is not equal if compared with a null value', () => {
