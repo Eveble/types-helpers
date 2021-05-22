@@ -2,9 +2,10 @@ import util from 'util';
 import { ValueTransformer } from 'typeorm';
 import { getTypeName } from '@eveble/helpers';
 import { EvebleTypes, kernel, HookableMixin } from '@eveble/eveble';
+import { NON_ENUMERABLE_VALUE_KEY } from './constants/literal-keys';
 
 export class ValueNumber extends Number {
-  protected value: number;
+  protected [NON_ENUMERABLE_VALUE_KEY]: number;
 
   constructor(value: number) {
     super(value);
@@ -12,7 +13,7 @@ export class ValueNumber extends Number {
     this.onValidation(value);
 
     Object.defineProperties(this, {
-      value: {
+      [NON_ENUMERABLE_VALUE_KEY]: {
         value,
         enumerable: false,
       },
@@ -48,11 +49,11 @@ export class ValueNumber extends Number {
   }
 
   public toString(): string {
-    return `${this.value}`;
+    return `${this[NON_ENUMERABLE_VALUE_KEY]}`;
   }
 
   public valueOf(): number {
-    return this.value;
+    return this[NON_ENUMERABLE_VALUE_KEY];
   }
 
   public toPlainObject(): number {

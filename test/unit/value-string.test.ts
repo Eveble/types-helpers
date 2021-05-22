@@ -3,6 +3,7 @@ import { kernel, UnmatchedTypeError } from '@eveble/eveble';
 import sinon from 'sinon';
 import sinonChai from 'sinon-chai';
 import { ValueString } from '../../src/value-string';
+import { NON_ENUMERABLE_VALUE_KEY } from '../../src/constants/literal-keys';
 
 chai.use(sinonChai);
 
@@ -23,7 +24,7 @@ describe('ValueString', () => {
 
   it('ensures that provided value is stored under non enumerable value property', () => {
     const val = new ValueString('foo');
-    expect((val as any).value).to.be.equal('foo');
+    expect((val as any)[NON_ENUMERABLE_VALUE_KEY]).to.be.equal('foo');
     expect(Object.keys(val).includes('value')).to.be.false;
   });
 

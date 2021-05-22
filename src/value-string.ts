@@ -8,6 +8,7 @@ import {
 import { classes } from 'polytype';
 import { ValueTransformer } from 'typeorm';
 import { ValidableMixin } from './mixins/validable-mixin';
+import { NON_ENUMERABLE_VALUE_KEY } from './constants/literal-keys';
 
 export class ValueString extends classes(
   String,
@@ -15,17 +16,17 @@ export class ValueString extends classes(
   HookableMixin,
   ValidableMixin
 ) {
+  protected [NON_ENUMERABLE_VALUE_KEY]: string;
+
   constructor(value: string) {
     super([value]);
     this.onValidation(value);
 
-    Object.defineProperty(this, 'value', {
+    Object.defineProperty(this, NON_ENUMERABLE_VALUE_KEY, {
       value,
       enumerable: false,
     });
   }
-
-  protected value: string;
 
   /**
    * Evaluates if value and value's type of passed other instance are equal to current one.
@@ -48,15 +49,15 @@ export class ValueString extends classes(
    *
    */
   [util.inspect.custom as symbol]() {
-    return `[${this.constructor.name}: '${this.value}']`;
+    return `[${this.constructor.name}: '${this[NON_ENUMERABLE_VALUE_KEY]}']`;
   }
 
   public toString(): string {
-    return this.value;
+    return this[NON_ENUMERABLE_VALUE_KEY];
   }
 
   public valueOf(): string {
-    return this.value;
+    return this[NON_ENUMERABLE_VALUE_KEY];
   }
 
   public toPlainObject(): string {
