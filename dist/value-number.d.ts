@@ -1,7 +1,8 @@
 import { ValueTransformer } from 'typeorm';
 import { EvebleTypes } from '@eveble/eveble';
+import { NON_ENUMERABLE_VALUE_KEY } from './constants/literal-keys';
 export declare class ValueNumber extends Number {
-    protected value: number;
+    protected [NON_ENUMERABLE_VALUE_KEY]: number;
     constructor(value: number);
     toString(): string;
     valueOf(): number;

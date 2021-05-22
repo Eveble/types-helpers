@@ -1,3 +1,10 @@
+# [2.5.0](https://github.com/eveble/types-helpers/compare/v2.4.0...v2.5.0) (2021-05-22)
+
+
+### Features
+
+* add NON_ENUMERABLE_VALUE_KEY constant ([d7a0f5d](https://github.com/eveble/types-helpers/commit/d7a0f5dd79a617e9f5b2f418648d96c26e0d1111))
+
 # [2.4.0](https://github.com/eveble/types-helpers/compare/v2.3.4...v2.4.0) (2021-05-18)
 
 

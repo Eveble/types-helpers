@@ -1,5 +1,6 @@
 export { types } from './types';
 export { types as HelpersTypes } from './types';
+export { NON_ENUMERABLE_VALUE_KEY } from './constants/literal-keys';
 export { Standard } from './standard';
 export { I18nError } from './i18n-error';
 export { ValueString } from './value-string';

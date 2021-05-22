@@ -4,6 +4,8 @@ import util from 'util';
 import { classes } from 'polytype';
 import { getTypeName } from '@eveble/helpers';
 
+const NON_ENUMERABLE_VALUE_KEY = '__value__';
+
 /*! *****************************************************************************
 Copyright (c) Microsoft Corporation.
 
@@ -116,7 +118,7 @@ class ValueString extends classes(String, EjsonableMixin, HookableMixin, Validab
     constructor(value) {
         super([value]);
         this.onValidation(value);
-        Object.defineProperty(this, 'value', {
+        Object.defineProperty(this, NON_ENUMERABLE_VALUE_KEY, {
             value,
             enumerable: false,
         });
@@ -127,13 +129,13 @@ class ValueString extends classes(String, EjsonableMixin, HookableMixin, Validab
             this.valueOf() === other.valueOf());
     }
     [util.inspect.custom]() {
-        return `[${this.constructor.name}: '${this.value}']`;
+        return `[${this.constructor.name}: '${this[NON_ENUMERABLE_VALUE_KEY]}']`;
     }
     toString() {
-        return this.value;
+        return this[NON_ENUMERABLE_VALUE_KEY];
     }
     valueOf() {
-        return this.value;
+        return this[NON_ENUMERABLE_VALUE_KEY];
     }
     toPlainObject() {
         return this.valueOf();
@@ -238,7 +240,7 @@ class ValueNumber extends Number {
         this.removeHook = HookableMixin.prototype.removeHook;
         this.onValidation(value);
         Object.defineProperties(this, {
-            value: {
+            [NON_ENUMERABLE_VALUE_KEY]: {
                 value,
                 enumerable: false,
             },
@@ -272,10 +274,10 @@ class ValueNumber extends Number {
         });
     }
     toString() {
-        return `${this.value}`;
+        return `${this[NON_ENUMERABLE_VALUE_KEY]}`;
     }
     valueOf() {
-        return this.value;
+        return this[NON_ENUMERABLE_VALUE_KEY];
     }
     toPlainObject() {
         return this.valueOf();
@@ -581,4 +583,4 @@ class ValidatorMixin {
     }
 }
 
-export { EmptyStringError, GeneratorExistsError, GeneratorMixin, GeneratorNotFoundError, I18nError, InvalidGeneratorIdError, InvalidValidatorIdError, NotApplicableError, Standard, StandardError, StandardExistError, StandardizedMixin, UnavailableConversionError, UnsupportedStandardError, ValidableMixin, ValidatorExistsError, ValidatorMixin, ValidatorNotFoundError, ValueNumber, ValueString };
+export { EmptyStringError, GeneratorExistsError, GeneratorMixin, GeneratorNotFoundError, I18nError, InvalidGeneratorIdError, InvalidValidatorIdError, NON_ENUMERABLE_VALUE_KEY, NotApplicableError, Standard, StandardError, StandardExistError, StandardizedMixin, UnavailableConversionError, UnsupportedStandardError, ValidableMixin, ValidatorExistsError, ValidatorMixin, ValidatorNotFoundError, ValueNumber, ValueString };
