@@ -1,4 +1,6 @@
 import { expect } from 'chai';
+// Constants
+import { NON_ENUMERABLE_VALUE_KEY } from '../../src/constants/literal-keys';
 // Components
 import { Standard } from '../../src/standard';
 import { I18nError } from '../../src/i18n-error';
@@ -30,6 +32,8 @@ import {
 import { EmptyStringError } from '../../src/errors';
 
 import {
+  // Constants
+  NON_ENUMERABLE_VALUE_KEY as NON_ENUMERABLE_VALUE_KEY_EXPORTED,
   // Components
   Standard as StandardExported,
   I18nError as I18nErrorExported,
@@ -56,6 +60,13 @@ import {
 } from '../../src/index';
 
 describe('exports', () => {
+  describe('constants', () => {
+    it('NON_ENUMERABLE_VALUE_KEY', () => {
+      expect(NON_ENUMERABLE_VALUE_KEY).to.be.equal(
+        NON_ENUMERABLE_VALUE_KEY_EXPORTED
+      );
+    });
+  });
   describe('components', () => {
     it('Standard', () => {
       expect(Standard).to.be.equal(StandardExported);
