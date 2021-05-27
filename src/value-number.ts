@@ -1,5 +1,4 @@
 import util from 'util';
-import { ValueTransformer } from 'typeorm';
 import { getTypeName } from '@eveble/helpers';
 import { EvebleTypes, kernel, HookableMixin } from '@eveble/eveble';
 import { NON_ENUMERABLE_VALUE_KEY } from './constants/literal-keys';
@@ -180,7 +179,7 @@ export class ValueNumber extends Number {
   /**
    * Returns `@Column` transformer for TypeORM.
    */
-  public static transformer = function (): ValueTransformer {
+  public static transformer = function () {
     // eslint-disable-next-line @typescript-eslint/no-this-alias
     const Self = this;
     return {

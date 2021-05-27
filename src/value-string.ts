@@ -6,7 +6,6 @@ import {
   EjsonableMixin,
 } from '@eveble/eveble';
 import { classes } from 'polytype';
-import { ValueTransformer } from 'typeorm';
 import { ValidableMixin } from './mixins/validable-mixin';
 import { NON_ENUMERABLE_VALUE_KEY } from './constants/literal-keys';
 
@@ -177,7 +176,7 @@ export class ValueString extends classes(
   /**
    * Returns `@Column` transformer for TypeORM.
    */
-  public static transformer = function (): ValueTransformer {
+  public static transformer = function () {
     // eslint-disable-next-line @typescript-eslint/no-this-alias
     const Self = this;
     return {

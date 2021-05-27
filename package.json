@@ -33,8 +33,7 @@
     "@eveble/eveble": "latest",
     "@eveble/helpers": "latest",
     "graphql": "latest",
-    "apollo-server-core": "latest",
-    "typeorm": "latest"
+    "apollo-server-core": "latest"
   },
   "devDependencies": {
     "@types/chai-as-promised": "^7.1.2",
