@@ -1,3 +1,10 @@
+## [2.5.1](https://github.com/eveble/types-helpers/compare/v2.5.0...v2.5.1) (2021-05-27)
+
+
+### Bug Fixes
+
+* **deps:** remove typeorm ([49edde1](https://github.com/eveble/types-helpers/commit/49edde1e63d7fc59153c5de759fe5f58336aa6a7))
+
 # [2.5.0](https://github.com/eveble/types-helpers/compare/v2.4.0...v2.5.0) (2021-05-22)
 
 

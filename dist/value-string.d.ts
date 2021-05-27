@@ -1,5 +1,4 @@
 import { HookableMixin, EjsonableMixin } from '@eveble/eveble';
-import { ValueTransformer } from 'typeorm';
 import { ValidableMixin } from './mixins/validable-mixin';
 import { NON_ENUMERABLE_VALUE_KEY } from './constants/literal-keys';
 declare const ValueString_base: import("polytype").Polytype.ClusteredConstructor<[StringConstructor, typeof EjsonableMixin, typeof HookableMixin, typeof ValidableMixin]>;
@@ -25,6 +24,9 @@ export declare class ValueString extends ValueString_base {
     sup(): string;
     protected onValidation(value: string, isStrict?: boolean): boolean;
     static from(value: string): any;
-    static transformer: () => ValueTransformer;
+    static transformer: () => {
+        to: (instance: any) => any;
+        from: (value: string | string[]) => any;
+    };
 }
 export {};

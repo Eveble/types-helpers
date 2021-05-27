@@ -1,4 +1,3 @@
-import { ValueTransformer } from 'typeorm';
 import { EvebleTypes } from '@eveble/eveble';
 import { NON_ENUMERABLE_VALUE_KEY } from './constants/literal-keys';
 export declare class ValueNumber extends Number {
@@ -24,7 +23,10 @@ export declare class ValueNumber extends Number {
     hasAction: (action: string) => boolean;
     removeHook: (action: string, id: string) => void;
     static from(value: number): any;
-    static transformer: () => ValueTransformer;
+    static transformer: () => {
+        to: (instance: any) => any;
+        from: (value: number | number[]) => any;
+    };
     protected onValidation(value: number, isStrict?: boolean): boolean;
     static setValidator(validator: (...args: any[]) => boolean): void;
     static getValidator(): () => boolean;
