@@ -32,7 +32,6 @@
     "polytype": "^0.9.4",
     "@eveble/eveble": "latest",
     "@eveble/helpers": "latest",
-    "graphql": "latest",
     "apollo-server-core": "latest"
   },
   "devDependencies": {
