@@ -8844,7 +8844,7 @@ plugin-error@^1.0.1:
     arr-union "^3.1.0"
     extend-shallow "^3.0.2"
 
-polytype@^0.16.2:
+polytype@^0.16.2, polytype@^0.16.22:
   version "0.16.2"
   resolved "https://registry.npmjs.org/polytype/-/polytype-0.16.2.tgz#865345dc6a682f3e2814245c96f367b1e6c81b1e"
   integrity sha512-fT5y+T4dkDq3eQ3M0L/JCcA8/kjK/T8gHtMGBg1F8f62PJkYKT7k27qDEHnK/FGwuuKHEob6krpgx1FQo1A2cA==
