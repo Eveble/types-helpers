@@ -1,4 +1,4 @@
-import { ValueObjectError, define, DEFAULTS, EjsonableMixin, HookableMixin, kernel, ExtendableError } from '@eveble/eveble';
+import { define, ValueObjectError, DEFAULTS, EjsonableMixin, HookableMixin, kernel, ExtendableError } from '@eveble/eveble';
 import { ApolloError } from 'apollo-server-core';
 import util from 'util';
 import { classes } from 'polytype';
@@ -209,17 +209,13 @@ ValueString.transformer = function () {
                 return undefined;
             }
             if (Array.isArray(instance)) {
-                return instance.map((item) => {
-                    return item.valueOf();
-                });
+                return instance.map((item) => item.valueOf());
             }
             return instance.valueOf();
         },
         from: (value) => {
             if (Array.isArray(value)) {
-                return value.map((item) => {
-                    return new Self(item);
-                });
+                return value.map((item) => new Self(item));
             }
             return new Self(value);
         },
@@ -351,17 +347,13 @@ ValueNumber.transformer = function () {
                 return undefined;
             }
             if (Array.isArray(instance)) {
-                return instance.map((item) => {
-                    return item.valueOf();
-                });
+                return instance.map((item) => item.valueOf());
             }
             return instance.valueOf();
         },
         from: (value) => {
             if (Array.isArray(value)) {
-                return value.map((item) => {
-                    return new Self(item);
-                });
+                return value.map((item) => new Self(item));
             }
             return new Self(value);
         },

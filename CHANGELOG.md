@@ -1,3 +1,11 @@
+## [2.5.2](https://github.com/eveble/types-helpers/compare/v2.5.1...v2.5.2) (2023-04-23)
+
+
+### Bug Fixes
+
+* **docs:** fix docs build do to issue with node_modules types ([41ab12b](https://github.com/eveble/types-helpers/commit/41ab12bf51be7189ea90b0bf3f0c447551a6f6c5))
+* **docs:** update docs build process ([e72aea4](https://github.com/eveble/types-helpers/commit/e72aea4ad35a7b24f5d62ef13f07107411ff04eb))
+
 ## [2.5.1](https://github.com/eveble/types-helpers/compare/v2.5.0...v2.5.1) (2021-05-27)
 
 

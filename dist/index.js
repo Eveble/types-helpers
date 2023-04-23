@@ -1,12 +1,8 @@
 'use strict';
 
-Object.defineProperty(exports, '__esModule', { value: true });
-
-function _interopDefault (ex) { return (ex && (typeof ex === 'object') && 'default' in ex) ? ex['default'] : ex; }
-
 var eveble = require('@eveble/eveble');
 var apolloServerCore = require('apollo-server-core');
-var util = _interopDefault(require('util'));
+var util = require('util');
 var polytype = require('polytype');
 var helpers = require('@eveble/helpers');
 
@@ -215,17 +211,13 @@ ValueString.transformer = function () {
                 return undefined;
             }
             if (Array.isArray(instance)) {
-                return instance.map((item) => {
-                    return item.valueOf();
-                });
+                return instance.map((item) => item.valueOf());
             }
             return instance.valueOf();
         },
         from: (value) => {
             if (Array.isArray(value)) {
-                return value.map((item) => {
-                    return new Self(item);
-                });
+                return value.map((item) => new Self(item));
             }
             return new Self(value);
         },
@@ -357,17 +349,13 @@ ValueNumber.transformer = function () {
                 return undefined;
             }
             if (Array.isArray(instance)) {
-                return instance.map((item) => {
-                    return item.valueOf();
-                });
+                return instance.map((item) => item.valueOf());
             }
             return instance.valueOf();
         },
         from: (value) => {
             if (Array.isArray(value)) {
-                return value.map((item) => {
-                    return new Self(item);
-                });
+                return value.map((item) => new Self(item));
             }
             return new Self(value);
         },

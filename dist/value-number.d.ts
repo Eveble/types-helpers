@@ -17,8 +17,8 @@ export declare class ValueNumber extends Number {
     overrideHook: (action: string, id: string, hook: EvebleTypes.AnyFunction) => void;
     getHook: (action: string, id: string) => EvebleTypes.AnyFunction | undefined;
     getHookOrThrow: (action: string, id: string) => EvebleTypes.AnyFunction;
-    getHooks: (action: string) => Record<string, EvebleTypes.AnyFunction>;
-    getActions: () => Record<string, Record<string, EvebleTypes.AnyFunction>>;
+    getHooks: (action: string) => EvebleTypes.hooks.Mappings;
+    getActions: () => EvebleTypes.hooks.Actions;
     hasHook: (action: string, id: string) => boolean;
     hasAction: (action: string) => boolean;
     removeHook: (action: string, id: string) => void;
