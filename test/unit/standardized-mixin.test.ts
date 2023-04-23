@@ -13,7 +13,7 @@ import {
 
 chai.use(sinonChai);
 
-describe('StandardizedMixin', function () {
+describe('StandardizedMixin', () => {
   const standardId = 'my-standard';
   const otherStandardId = 'other-standard';
   let standard: any;
@@ -28,9 +28,8 @@ describe('StandardizedMixin', function () {
     standard.getId.returns(standardId);
     otherStandard.getId.returns(otherStandardId);
 
-    MyStandardizedVO = class MyVO extends classes(
-      ValueObject,
-      StandardizedMixin
+    MyStandardizedVO = class MyVO extends (
+      classes(ValueObject, StandardizedMixin)
     ) {};
   });
 

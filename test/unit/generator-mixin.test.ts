@@ -5,7 +5,7 @@ import {
   InvalidGeneratorIdError,
 } from '../../src/mixins/generator-mixin';
 
-describe(`GeneratorMixin`, function () {
+describe(`GeneratorMixin`, () => {
   const generator = function (): string {
     return 'burp';
   };
@@ -16,7 +16,7 @@ describe(`GeneratorMixin`, function () {
     it('throws InvalidGeneratorIdError if provided id is not a string on registering generator', () => {
       expect(() =>
         new SoundGenerator().registerGenerator(
-          (undefined as any) as string,
+          undefined as any as string,
           generator
         )
       ).to.throw(

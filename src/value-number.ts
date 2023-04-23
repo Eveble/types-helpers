@@ -188,17 +188,13 @@ export class ValueNumber extends Number {
           return undefined;
         }
         if (Array.isArray(instance)) {
-          return instance.map((item) => {
-            return item.valueOf();
-          });
+          return instance.map((item) => item.valueOf());
         }
         return instance.valueOf();
       },
       from: (value: number | number[]) => {
         if (Array.isArray(value)) {
-          return value.map((item) => {
-            return new Self(item);
-          });
+          return value.map((item) => new Self(item));
         }
         return new Self(value);
       },

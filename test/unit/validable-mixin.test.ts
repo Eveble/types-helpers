@@ -4,7 +4,7 @@ import { expect } from 'chai';
 import sinon from 'sinon';
 import { ValidableMixin } from '../../src/mixins/validable-mixin';
 
-describe('ValidableMixin', function () {
+describe('ValidableMixin', () => {
   @define('ValidableMixin.MyVO')
   class MyVO extends classes(ValueObject, ValidableMixin) {
     value: string;

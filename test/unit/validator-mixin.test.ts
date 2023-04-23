@@ -5,7 +5,7 @@ import {
   InvalidValidatorIdError,
 } from '../../src/mixins/validator-mixin';
 
-describe(`ValidatorMixin`, function () {
+describe(`ValidatorMixin`, () => {
   const validator = function (value: string): boolean {
     return typeof value === 'string';
   };
@@ -16,7 +16,7 @@ describe(`ValidatorMixin`, function () {
     it('throws InvalidValidatorIdError if provided id is not a string on registering validator', () => {
       expect(() =>
         new ColorValidator().registerValidator(
-          (undefined as any) as string,
+          undefined as any as string,
           validator
         )
       ).to.throw(

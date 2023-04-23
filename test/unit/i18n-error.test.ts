@@ -3,7 +3,7 @@ import { ApolloError } from 'apollo-server-core';
 import { DEFAULTS } from '@eveble/eveble';
 import { I18nError } from '../../src/i18n-error';
 
-describe('I18nError', function () {
+describe('I18nError', () => {
   class MyError extends I18nError {
     constructor(firstVar: string, secondVar: number) {
       super(

@@ -5,7 +5,7 @@ import { Standard, UnconvertibleStandardError } from '../../src/standard';
 import { types } from '../../src/types';
 import { UnimplementedError } from '../../src/errors';
 
-describe('Standard', function () {
+describe('Standard', () => {
   let converter: any;
 
   class MyStandard extends Standard<string> {
