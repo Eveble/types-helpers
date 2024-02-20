@@ -1,3 +1,10 @@
+## [2.5.3](https://github.com/eveble/types-helpers/compare/v2.5.2...v2.5.3) (2024-02-20)
+
+
+### Bug Fixes
+
+* **release:** update eveble dependencies on yarn.lock ([4682d20](https://github.com/eveble/types-helpers/commit/4682d20de835ca1398c6c2b0b684fef6d7b552b4))
+
 ## [2.5.2](https://github.com/eveble/types-helpers/compare/v2.5.1...v2.5.2) (2023-04-23)
 
 
