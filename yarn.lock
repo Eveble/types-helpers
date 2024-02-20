@@ -499,9 +499,9 @@
     underscore "~1.8.3"
 
 "@eveble/eveble@latest":
-  version "2.5.5"
-  resolved "https://registry.npmjs.org/@eveble/eveble/-/eveble-2.5.5.tgz#e369c28cb3a334c676b231904c867b44dcc0e56c"
-  integrity sha512-RrWPJWOPz0aBdJwLYZbAQd55pWtaWrDo+drpJcyjmueZpuvf8rY62z+GQFsvpHEFweZx1XvSyCEDIT+rgfK/rw==
+  version "2.6.0"
+  resolved "https://registry.npmjs.org/@eveble/eveble/-/eveble-2.6.0.tgz#ebe23fc2381060e5ce03d78769c40eeca4bf8d83"
+  integrity sha512-9vTglV1IgyTmF032im5MyME3hhuR5d2AYtuTrTx0QQ0xPA5J3cpA1eTiyBpIAlEnx6I9UhR+WgErh6g/0i3uOQ==
   dependencies:
     "@eveble/core" latest
     "@eveble/ejson" latest
@@ -545,12 +545,12 @@
   integrity sha512-k2Ty1JcVojjJFwrg/ThKi2ujJ7XNLYaFGNB/bWT9wGR+oSMJHMa5w+CUq6p/pVrKeNNgA7pCqEcjSnHVoqJQFw==
 
 "@humanwhocodes/config-array@^0.11.8":
-  version "0.11.8"
-  resolved "https://registry.npmjs.org/@humanwhocodes/config-array/-/config-array-0.11.8.tgz#03595ac2075a4dc0f191cc2131de14fbd7d410b9"
-  integrity sha512-UybHIJzJnR5Qc/MsD9Kr+RpO2h+/P1GhOwdiLPXK5TWk5sgTdu88bTD9UP+CKbPPh5Rni1u0GjAdYQLemG8g+g==
+  version "0.11.14"
+  resolved "https://registry.npmjs.org/@humanwhocodes/config-array/-/config-array-0.11.14.tgz#d78e481a039f7566ecc9660b4ea7fe6b1fec442b"
+  integrity sha512-3T8LkOmg45BV5FICb15QQMsyUSWrQ8AygVfC7ZG32zOalnqrilm018ZVCw0eapXux8FtA33q8PSRSstjee3jSg==
   dependencies:
-    "@humanwhocodes/object-schema" "^1.2.1"
-    debug "^4.1.1"
+    "@humanwhocodes/object-schema" "^2.0.2"
+    debug "^4.3.1"
     minimatch "^3.0.5"
 
 "@humanwhocodes/module-importer@^1.0.1":
@@ -558,10 +558,10 @@
   resolved "https://registry.npmjs.org/@humanwhocodes/module-importer/-/module-importer-1.0.1.tgz#af5b2691a22b44be847b0ca81641c5fb6ad0172c"
   integrity sha512-bxveV4V8v5Yb4ncFTT3rPSgZBOpCkjfK0y4oVVVJwIuDVBRMDXrPyXRL988i5ap9m9bnyEEjWfm5WkBmtffLfA==
 
-"@humanwhocodes/object-schema@^1.2.1":
-  version "1.2.1"
-  resolved "https://registry.npmjs.org/@humanwhocodes/object-schema/-/object-schema-1.2.1.tgz#b520529ec21d8e5945a1851dfd1c32e94e39ff45"
-  integrity sha512-ZnQMnLV4e7hDlUvw8H+U8ASL02SS2Gn6+9Ac3wGGLIe7+je2AeAOxPY+izIPJDfFDb7eDjev0Us8MO1iFRN8hA==
+"@humanwhocodes/object-schema@^2.0.2":
+  version "2.0.2"
+  resolved "https://registry.npmjs.org/@humanwhocodes/object-schema/-/object-schema-2.0.2.tgz#d9fae00a2d5cb40f92cfe64b47ad749fbc38f917"
+  integrity sha512-6EwiSjwWYP7pTckG6I5eyFANjPhmPjUX9JRLUSfNPC7FX7zK9gyZAfUEaECL6ALTpGX5AjnBq3C9XmVWPitNpw==
 
 "@isaacs/string-locale-compare@^1.1.0":
   version "1.1.0"
@@ -605,15 +605,10 @@
     "@jridgewell/sourcemap-codec" "^1.4.10"
     "@jridgewell/trace-mapping" "^0.3.9"
 
-"@jridgewell/resolve-uri@3.1.0":
-  version "3.1.0"
-  resolved "https://registry.npmjs.org/@jridgewell/resolve-uri/-/resolve-uri-3.1.0.tgz#2203b118c157721addfe69d47b70465463066d78"
-  integrity sha512-F2msla3tad+Mfht5cJq7LSXcdudKTWCVYUgw6pLFOOHSTtZlj6SWNYAp+AhuqLmWdBO2X5hPrLcu8cVP8fy28w==
-
-"@jridgewell/resolve-uri@^3.0.3":
-  version "3.1.1"
-  resolved "https://registry.npmjs.org/@jridgewell/resolve-uri/-/resolve-uri-3.1.1.tgz#c08679063f279615a3326583ba3a90d1d82cc721"
-  integrity sha512-dSYZh7HhCDtCKm4QakX0xFpsRDqjjtZf/kjI/v3T3Nwt5r8/qz/M19F9ySyOqU94SXBmeG9ttTul+YnR4LOxFA==
+"@jridgewell/resolve-uri@^3.0.3", "@jridgewell/resolve-uri@^3.1.0":
+  version "3.1.2"
+  resolved "https://registry.npmjs.org/@jridgewell/resolve-uri/-/resolve-uri-3.1.2.tgz#7a0ee601f60f99a20c7c7c5ff0c80388c1189bd6"
+  integrity sha512-bRISgCIjP20/tbWSPWMEi54QVPRZExkuD9lJL+UIxUKtwVJA8wW1Trb1jMs1RFXo1CBTNZ/5hpC9QvmKWdopKw==
 
 "@jridgewell/set-array@^1.0.1":
   version "1.1.2"
@@ -621,19 +616,14 @@
   integrity sha512-xnkseuNADM0gt2bs+BvhO0p78Mk762YnZdsuzFV018NoG1Sj1SCQvpSqa7XUaTam5vAGasABV9qXASMKnFMwMw==
 
 "@jridgewell/source-map@^0.3.2":
-  version "0.3.3"
-  resolved "https://registry.npmjs.org/@jridgewell/source-map/-/source-map-0.3.3.tgz#8108265659d4c33e72ffe14e33d6cc5eb59f2fda"
-  integrity sha512-b+fsZXeLYi9fEULmfBrhxn4IrPlINf8fiNarzTof004v3lFdntdwa9PF7vFJqm3mg7s+ScJMxXaE3Acp1irZcg==
+  version "0.3.5"
+  resolved "https://registry.npmjs.org/@jridgewell/source-map/-/source-map-0.3.5.tgz#a3bb4d5c6825aab0d281268f47f6ad5853431e91"
+  integrity sha512-UTYAUj/wviwdsMfzoSJspJxbkH5o1snzwX0//0ENX1u/55kkZZkcTZP6u9bwKGkv+dkk9at4m1Cpt0uY80kcpQ==
   dependencies:
     "@jridgewell/gen-mapping" "^0.3.0"
     "@jridgewell/trace-mapping" "^0.3.9"
 
-"@jridgewell/sourcemap-codec@1.4.14":
-  version "1.4.14"
-  resolved "https://registry.npmjs.org/@jridgewell/sourcemap-codec/-/sourcemap-codec-1.4.14.tgz#add4c98d341472a289190b424efbdb096991bb24"
-  integrity sha512-XPSJHWmi394fuUuzDnGz1wiKqWfo1yXecHQMRf2l6hztTO+nPru658AyDngaBe7isIxEkRsPR3FZh+s7iVa4Uw==
-
-"@jridgewell/sourcemap-codec@^1.4.10":
+"@jridgewell/sourcemap-codec@^1.4.10", "@jridgewell/sourcemap-codec@^1.4.14":
   version "1.4.15"
   resolved "https://registry.npmjs.org/@jridgewell/sourcemap-codec/-/sourcemap-codec-1.4.15.tgz#d7c6e6755c78567a951e04ab52ef0fd26de59f32"
   integrity sha512-eF2rxCRulEKXHTRiDrDy6erMYWqNw4LPdQ8UQA4huuxaQsVeRPFl2oM8oDGxMFhJUWZf9McpLtJasDDZb/Bpeg==
@@ -647,12 +637,12 @@
     "@jridgewell/sourcemap-codec" "^1.4.10"
 
 "@jridgewell/trace-mapping@^0.3.9":
-  version "0.3.18"
-  resolved "https://registry.npmjs.org/@jridgewell/trace-mapping/-/trace-mapping-0.3.18.tgz#25783b2086daf6ff1dcb53c9249ae480e4dd4cd6"
-  integrity sha512-w+niJYzMHdd7USdiH2U6869nqhD2nbfZXND5Yp93qIbEmnDNk7PD48o+YchRVpzMU7M6jVCbenTR7PA1FLQ9pA==
+  version "0.3.22"
+  resolved "https://registry.npmjs.org/@jridgewell/trace-mapping/-/trace-mapping-0.3.22.tgz#72a621e5de59f5f1ef792d0793a82ee20f645e4c"
+  integrity sha512-Wf963MzWtA2sjrNt+g18IAln9lKnlRp+K2eH4jjIoF1wYeq3aMREpG09xhlhdzS0EjwU7qmUJYangWa+151vZw==
   dependencies:
-    "@jridgewell/resolve-uri" "3.1.0"
-    "@jridgewell/sourcemap-codec" "1.4.14"
+    "@jridgewell/resolve-uri" "^3.1.0"
+    "@jridgewell/sourcemap-codec" "^1.4.14"
 
 "@jsbits/deep-clone@^1.1.1":
   version "1.1.1"
@@ -3556,7 +3546,7 @@ debug@4, debug@^4.0.0, debug@^4.1.0, debug@^4.1.1, debug@~4.1.1:
   dependencies:
     ms "^2.1.1"
 
-debug@4.3.4, debug@^4.3.2, debug@^4.3.3, debug@^4.3.4:
+debug@4.3.4, debug@^4.3.1, debug@^4.3.2, debug@^4.3.3, debug@^4.3.4:
   version "4.3.4"
   resolved "https://registry.npmjs.org/debug/-/debug-4.3.4.tgz#1319f6579357f2338d3337d2cdd4914bb5dcc865"
   integrity sha512-PRWFHuSU3eDtQJPvnNY7Jcket1j0t5OuOsFzPPzsekD52Zl8qUfFIPEiswXqIvHWGVHOgX+7G/vCNNhehwxfkQ==
@@ -8844,7 +8834,7 @@ plugin-error@^1.0.1:
     arr-union "^3.1.0"
     extend-shallow "^3.0.2"
 
-polytype@^0.16.2, polytype@^0.16.22:
+polytype@^0.16.2:
   version "0.16.2"
   resolved "https://registry.npmjs.org/polytype/-/polytype-0.16.2.tgz#865345dc6a682f3e2814245c96f367b1e6c81b1e"
   integrity sha512-fT5y+T4dkDq3eQ3M0L/JCcA8/kjK/T8gHtMGBg1F8f62PJkYKT7k27qDEHnK/FGwuuKHEob6krpgx1FQo1A2cA==
