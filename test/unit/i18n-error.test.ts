@@ -1,6 +1,6 @@
 import { expect } from 'chai';
-import { ApolloError } from 'apollo-server-core';
 import { DEFAULTS } from '@eveble/eveble';
+import { GraphQLError } from 'graphql';
 import { I18nError } from '../../src/i18n-error';
 
 describe('I18nError', () => {
@@ -15,8 +15,8 @@ describe('I18nError', () => {
     }
   }
 
-  it('extends ApolloError', () => {
-    expect(I18nError.prototype).to.be.instanceof(ApolloError);
+  it('extends GraphQLError', () => {
+    expect(I18nError.prototype).to.be.instanceof(GraphQLError);
   });
 
   describe('construction', () => {
