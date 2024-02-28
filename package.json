@@ -29,7 +29,7 @@
     "reflect-metadata": "^0.1.13",
     "tsruntime": "^3.0.0-beta.1",
     "ttypescript": "^1.5.15",
-    "polytype": "^0.16.2",
+    "polytype": "^0.17.0",
     "@eveble/eveble": "latest",
     "@eveble/helpers": "latest",
     "graphql": "latest",
