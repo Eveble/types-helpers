@@ -1,6 +1,6 @@
-import { ApolloError } from 'apollo-server-core';
 import { EvebleTypes } from '@eveble/eveble';
-export declare abstract class I18nError extends ApolloError {
+import { GraphQLError } from 'graphql';
+export declare abstract class I18nError extends GraphQLError {
     message: string;
     variables: {
         [key: string]: string | number;

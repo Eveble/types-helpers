@@ -1,7 +1,7 @@
 'use strict';
 
 var eveble = require('@eveble/eveble');
-var apolloServerCore = require('apollo-server-core');
+var graphql = require('graphql');
 var util = require('util');
 var polytype = require('polytype');
 var helpers = require('@eveble/helpers');
@@ -22,6 +22,8 @@ LOSS OF USE, DATA OR PROFITS, WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE OR
 OTHER TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR
 PERFORMANCE OF THIS SOFTWARE.
 ***************************************************************************** */
+/* global Reflect, Promise */
+
 
 function __decorate(decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -91,9 +93,11 @@ class Standard {
     }
 }
 
-class I18nError extends apolloServerCore.ApolloError {
+class I18nError extends graphql.GraphQLError {
     constructor(message, variables = {}, code, logLevel = eveble.DEFAULTS.LOGGING_LEVELS.warning) {
-        super(message, code);
+        super(message, {
+            extensions: { code, variables, logLevel },
+        });
         this.message = message;
         this.variables = variables;
         this.code = code;

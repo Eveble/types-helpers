@@ -1,5 +1,5 @@
 import { define, ValueObjectError, DEFAULTS, EjsonableMixin, HookableMixin, kernel, ExtendableError } from '@eveble/eveble';
-import { ApolloError } from 'apollo-server-core';
+import { GraphQLError } from 'graphql';
 import util from 'util';
 import { classes } from 'polytype';
 import { getTypeName } from '@eveble/helpers';
@@ -20,6 +20,8 @@ LOSS OF USE, DATA OR PROFITS, WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE OR
 OTHER TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR
 PERFORMANCE OF THIS SOFTWARE.
 ***************************************************************************** */
+/* global Reflect, Promise */
+
 
 function __decorate(decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -89,9 +91,11 @@ class Standard {
     }
 }
 
-class I18nError extends ApolloError {
+class I18nError extends GraphQLError {
     constructor(message, variables = {}, code, logLevel = DEFAULTS.LOGGING_LEVELS.warning) {
-        super(message, code);
+        super(message, {
+            extensions: { code, variables, logLevel },
+        });
         this.message = message;
         this.variables = variables;
         this.code = code;

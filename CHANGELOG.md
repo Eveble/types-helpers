@@ -1,3 +1,10 @@
+## [2.5.4](https://github.com/eveble/types-helpers/compare/v2.5.3...v2.5.4) (2024-02-28)
+
+
+### Bug Fixes
+
+* use GraphQLError instead of ApolloError ([268f1b6](https://github.com/eveble/types-helpers/commit/268f1b65ee63fe5c99faa212ba51eb82488f1650))
+
 ## [2.5.3](https://github.com/eveble/types-helpers/compare/v2.5.2...v2.5.3) (2024-02-20)
 
 
